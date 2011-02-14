@@ -139,6 +139,9 @@ MS.State.Preload = {
         if (this.count == this.totalCount && typeof(this.update.subscribed) == 'undefined') {
             this.update.subscribed = true;
             
+            // Minor change for when there are no assets to be loaded
+            this.percentage = this.percentage || 100; 
+            
             // Stall on loading screen in debugging mode
             if (DE.Config.DEBUG) {
                 DE.InputManager.subscribeAll(this.next);
