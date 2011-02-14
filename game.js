@@ -65,9 +65,6 @@ MS.Assets = {
     // JavaScript doesn't have a way to import assets automatically, so we
     // have to specify the locations directly
     ImageURLs : {
-        background : 'bg.jpg',
-        vine : 'vine.jpg',
-        ice : 'ice.jpg'
     },
     // Actual image objects that is used by the game logic
     Images : {}
