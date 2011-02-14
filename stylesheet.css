@@ -1,0 +1,12 @@
+body, .ui-content {
+    background-color: #000;
+}
+
+#viewport {
+    position: relative;
+    background-color: #fff;
+}
+
+#viewport #div {
+    position: absolute;
+}

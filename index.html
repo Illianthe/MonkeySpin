@@ -3,10 +3,24 @@
 <html lang="en">
 <head>
     <title>Monkey Spin</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <link rel="stylesheet" type="text/css" href="library/jquery.mobile-1.0a3.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    
+    <script type="text/javascript" src="library/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="library/jquery.mobile-1.0a3.min.js"></script>
+    <script type="text/javascript" src="library/modernizr-1.6.min.js"></script>
     <script type="text/javascript" src="game.js"></script>
 </head>
 
 <body>
+    <div data-role="page" data-fullscreen="true">
+        <div data-role="content">
+            <div id="viewport"></div>
+        </div>
+    </div>
 </body>
 </html>
