@@ -1,2 +1,0 @@
-// Game logic
-MS.Game = {};

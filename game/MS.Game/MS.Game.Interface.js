@@ -1,0 +1,1 @@
+MS.Game.Interface = {};

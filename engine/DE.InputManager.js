@@ -25,23 +25,29 @@ DE.InputManager.Base = {
     functions : [],      // Subscribed functions
     context : window,    // Rebinds "this"
     
-    // void subscribe(function fn)
-    // Adds a function to the array that will listen to triggered events
+    /**
+     * void subscribe(function fn)
+     * Adds a function to the array that will listen to triggered events
+     */
     subscribe : function(fn) {
         this.functions.push(fn);
     },
     
-    // void unsubscribe(function fn)
-    // Stop function from listening to triggered events
+    /**
+     * void unsubscribe(function fn)
+     * Stop function from listening to triggered events
+     */
     unsubscribe : function(fn) {
         this.functions = this.functions.filter(function(elt) {
             return (elt != fn);
         });
     },
     
-    // void trigger(obj event, string type, [obj context])
-    // Calls function with "this" set to context and event (keypress, click,
-    // etc.) passed as an argument
+    /**
+     * void trigger(obj event, string type, [obj context])
+     * Calls function with "this" set to context and event (keypress, click,
+     * etc.) passed as an argument
+     */
     trigger : function(event, type, context) {
         var _context = context || this.context;
         this.functions.forEach(function(elt) {

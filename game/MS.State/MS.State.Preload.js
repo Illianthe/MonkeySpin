@@ -1,10 +1,3 @@
-// States of the game - each state has the following functions common to them:
-// - start() : called when state is initialized
-// - exit() : called when state is exiting (popped off the stack)
-// - draw() : called when the game loop attempts to render graphics
-// - update() : called when the game loop attempts to update game state
-MS.State = {};
-
 MS.State.Preload = {
     count : 0,         // Number of physical assets loaded
     totalCount : 0,    // Total number of assets
@@ -61,16 +54,20 @@ MS.State.Preload = {
         }
     },
     
-    // void imageLoaded()
-    // Callback function that triggers when images have finished loading
+    /**
+     * void imageLoaded()
+     * Callback function that triggers when images have finished loading
+     */
     imageLoaded : function() {
         this.count += 1;
         this.percentage = (this.count / this.totalCount * 100).toFixed(0);
         DE.Util.log('PRELOAD: Percentage of images loaded: ' + this.percentage + '%');
     },
     
-    // void next(obj event, string type)
-    // Processes input to proceed to the next state
+    /**
+     * void next(obj event, string type)
+     * Processes input to proceed to the next state
+     */
     next : function(event, type) {
         DE.Util.log('PRELOAD: Event (' + type + ') triggered');
         
@@ -79,64 +76,4 @@ MS.State.Preload = {
         DE.StateManager.pop();
         DE.StateManager.push(MS.State.Main);
     }
-};
-
-MS.State.Main = {
-    start : function() {
-        DE.Util.log('MAIN : Starting state');
-        DE.Renderer.Object.create('title');
-        DE.InputManager.changeContext(this);
-    },
-    
-    exit : function() {
-        DE.Util.log('MAIN : Exiting state');
-        DE.Renderer.Object.destroy('title');
-    },
-    
-    draw : function() {
-        $('#title').html('Monkey Spin');
-    },
-    
-    update : function() {
-        if (typeof(this.update.subscribed) == 'undefined') {
-            this.update.subscribed = true;
-            DE.InputManager.subscribeAll(this.next);
-        }
-    },
-    
-    // void next(obj event, string type)
-    // Processes input to proceed to the next state
-    next : function(event, type) {
-        DE.InputManager.unsubscribeAll(this.next);
-        DE.StateManager.pop();
-        DE.StateManager.push(MS.State.Game);
-    }
-};
-
-MS.State.Game = {
-    start : function() {
-        DE.Util.log('GAME: Starting state');
-    },
-    
-    exit : function() {
-        DE.Util.log('GAME: Exiting state');
-    },
-    
-    draw : function() {},
-    
-    update : function() {}
-};
-
-MS.State.Options = {
-    start : function() {},
-    exit : function() {},
-    draw : function() {},
-    update : function() {}
-};
-
-MS.State.Credits = {
-    start : function() {},
-    exit : function() {},
-    draw : function() {},
-    update : function() {}
 };

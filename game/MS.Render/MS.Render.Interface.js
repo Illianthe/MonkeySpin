@@ -1,0 +1,1 @@
+MS.Render.Interface = {};
