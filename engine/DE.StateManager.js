@@ -14,7 +14,7 @@ DE.StateManager = {
     },
     
     /**
-     * void remove()
+     * void pop()
      * Remove state from the end of the stack
      */
     pop : function() {
@@ -27,7 +27,17 @@ DE.StateManager = {
     },
     
     /**
-     * void add(obj state)
+     * void popAll()
+     * Pop all states on the stack
+     */
+    popAll : function() {
+        while (this.states.length > 0) {
+            pop();
+        }
+    },
+    
+    /**
+     * obj add(obj state)
      * Add state to the end of the stack
      */
     push : function(state) {
@@ -35,6 +45,7 @@ DE.StateManager = {
         if (typeof(state.start) == 'function') {
             state.start();
         }
+        return state;
     },
 
     /**

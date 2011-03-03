@@ -9,5 +9,10 @@ MS.State.Game = {
     
     draw : function() {},
     
-    update : function() {}
+    update : function() {
+        if (typeof(this.update.subscribed) == 'undefined') {
+            this.update.subscribed = true;
+            DE.InputManager.subscribeAll(MS.Game.Input.parse);
+        }
+    }
 };

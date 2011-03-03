@@ -18,6 +18,27 @@ DE.InputManager = {
         DE.InputManager.Keyboard.context = context;
         DE.InputManager.Mouse.context = context;
         DE.InputManager.Touch.context = context;
+    },
+    
+    isKeypress : function(type) {
+        if (type == 'keypress') {
+            return true;
+        }
+        return false;
+    },
+    
+    isTap : function(type) {
+        if (type == 'tap') {
+            return true;
+        }
+        return false;
+    },
+    
+    isClick : function(type) {
+        if (type == 'click') {
+            return true;
+        }
+        return false;
     }
 };
 
