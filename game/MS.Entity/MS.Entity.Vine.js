@@ -1,0 +1,3 @@
+MS.Entity.Vine = {
+    
+}

@@ -5,13 +5,13 @@
  */
 MS.Game.Input.js = {
     parse : function(event, type) {
-        if (DE.InputManager.isTap) {
+        if (DE.InputManager.isTap(type)) {
             parseTap(event);
         }
-        else if (DE.InputManager.isClick) {
+        else if (DE.InputManager.isClick(type)) {
             parseClick(event);
         }
-        else if (DE.InputManager.isKeypress) {
+        else if (DE.InputManager.isKeypress(type)) {
             parseKeypress(event);
         }
     },

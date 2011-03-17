@@ -13,13 +13,6 @@ DE.InputManager = {
         DE.InputManager.Touch.unsubscribe(fn);
     },
     
-    // Change context
-    changeContext : function(context) {
-        DE.InputManager.Keyboard.context = context;
-        DE.InputManager.Mouse.context = context;
-        DE.InputManager.Touch.context = context;
-    },
-    
     isKeypress : function(type) {
         if (type == 'keypress') {
             return true;
@@ -44,7 +37,6 @@ DE.InputManager = {
 
 DE.InputManager.Base = {
     functions : [],      // Subscribed functions
-    context : window,    // Rebinds "this"
     
     /**
      * void subscribe(function fn)
@@ -70,7 +62,7 @@ DE.InputManager.Base = {
      * etc.) passed as an argument
      */
     trigger : function(event, type, context) {
-        var _context = context || this.context;
+        var _context = context || window;
         this.functions.forEach(function(elt) {
             elt.call(_context, event, type);
         });

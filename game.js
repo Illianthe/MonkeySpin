@@ -2,8 +2,28 @@
 /* General                                                                    */
 /******************************************************************************/
 
+var test = function() {
+	var val = 1;
+	var tester = {
+		setVal : function() {
+			val += 1;
+		},
+		getVal : function() {
+			return val;
+		}
+
+	}
+	return tester;
+};
+
 $(document).ready(function() {
-    MS.init();
+	var a = test();
+	var b = test();
+	a.setVal();
+	console.log(a.getVal());
+	console.log(b.getVal());
+	a.setVal();
+	console.log(a.getVal());
 });
 
 // Object.create() was introduced in JavaScript 1.8.5, meaning it isn't
@@ -142,9 +162,11 @@ MS.State.Preload = {
             // Minor change for when there are no assets to be loaded
             this.percentage = this.percentage || 100; 
             
+            that = this;
+            
             // Stall on loading screen in debugging mode
             if (DE.Config.DEBUG) {
-                DE.InputManager.subscribeAll(this.next);
+                DE.InputManager.subscribeAll(this.next());
             }
             else {
                 DE.StateManager.pop();
@@ -163,13 +185,18 @@ MS.State.Preload = {
     
     // void next(obj event, string type)
     // Processes input to proceed to the next state
-    next : function(event, type) {
-        DE.Util.log('PRELOAD: Event (' + type + ') triggered');
+    next : function() {
+        that = this;
         
         // Don't really care about the event - just continue on input
         DE.InputManager.unsubscribeAll(this.next);
         DE.StateManager.pop();
         DE.StateManager.push(MS.State.Main);
+        
+        return function(event, type) {
+            DE.Util.log('PRELOAD: Event (' + type + ') triggered');
+            console.log(that);
+        }
     }
 };
 
@@ -294,7 +321,7 @@ DE.InputManager.Base = {
     trigger : function(event, type, context) {
         var _context = context || this.context;
         this.functions.forEach(function(elt) {
-            elt.call(_context, event, type);
+            elt(event, type);
         });
     }
 };
