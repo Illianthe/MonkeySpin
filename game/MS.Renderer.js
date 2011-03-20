@@ -1,6 +1,9 @@
 MS.Renderer = {
     vineCanvas : null,
     vineContext : null,
+    monkeyCanvas : null,
+    monkeyContext : null,
+    cameraYPivot : MS.Config.Map.TILESIZE,
     
     init : function() {
         this.vineCanvas = $('#vinecanvas')[0];
@@ -8,8 +11,14 @@ MS.Renderer = {
         this.vineCanvas.width = MS.Config.Resolution.WIDTH;
         this.vineCanvas.height = MS.Config.Resolution.HEIGHT;
         
+        this.monkeyCanvas = $('#monkeycanvas')[0];
+        this.monkeyContext = this.monkeyCanvas.getContext("2d");
+        this.monkeyCanvas.width = MS.Config.Resolution.WIDTH;
+        this.monkeyCanvas.height = MS.Config.Resolution.HEIGHT;
+        
         // Center canvas
         this.vineContext.translate(20, 0);
+        this.monkeyContext.translate(20, 0);
     },
     
     /**
@@ -23,6 +32,9 @@ MS.Renderer = {
             case E.BANANA:
                 break;
             case E.MONKEY:
+                this.monkeyContext.clearRect(0, 0, this.monkeyCanvas.width, this.monkeyCanvas.height);
+                this.monkeyContext.fillStyle = '#993300';
+                this.monkeyContext.fillRect(obj.xPos, this.cameraYPivot, obj.width, obj.height);
                 break;
             case E.VINE:
                 this.vineContext.drawImage(
@@ -31,6 +43,6 @@ MS.Renderer = {
                     obj.yPos - MS.Game.Player.character.yPos
                 );
                 break;
-        }
+        }        
     }
 }

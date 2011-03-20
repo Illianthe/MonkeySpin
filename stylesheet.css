@@ -2,8 +2,19 @@ body, .ui-content {
     background-color: #000;
 }
 
-#vinecanvas {
+#container {
     position: relative;
-    background-color: #fff;
+    width: 320px;
+    height: 480px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
     overflow: hidden;
+}
+
+#vinecanvas {
+    background-color: #fff;
 }

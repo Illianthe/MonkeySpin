@@ -72,7 +72,7 @@ DE.InputManager.Base = {
 DE.InputManager.Keyboard = $.extend(true, {}, DE.InputManager.Base);
 DE.InputManager.Keyboard.init = function() {
     var that = this;
-    $(document).keypress(function(event) {
+    $(document).keyup(function(event) {
         that.trigger(event, 'keypress');
     });
 };

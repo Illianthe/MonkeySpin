@@ -27,7 +27,7 @@ MS.Game.Player = {
      */
     processAction : function() {
         var result = this.nextAction;
-        nextAction = null;
+        this.nextAction = null;
         return result;
     },
     
@@ -39,7 +39,10 @@ MS.Game.Player = {
     
     update : function() {
         this.character.update();
-        this.character.yPos += 10;
-        MS.Game.Map.range += 10;
+        MS.Game.Map.range += this.character.velocity;
+    },
+    
+    draw : function() {
+        this.character.draw();
     }
 }

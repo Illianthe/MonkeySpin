@@ -15,7 +15,7 @@ MS.Game.Input = {
     parseKeypress : function(event) {
         var P = MS.Game.Player;
         
-        switch (event.keyCode) {
+        switch (event.which) {
             case 37:    // Left Arrow
             case 65:    // A
             case 39:    // Right Arrow
