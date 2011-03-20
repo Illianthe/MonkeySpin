@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    DE.init();
     MS.init();
 });
 

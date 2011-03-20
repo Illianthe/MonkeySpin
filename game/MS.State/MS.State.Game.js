@@ -1,18 +1,20 @@
 MS.State.Game = {
     start : function() {
         DE.Util.log('GAME: Starting state');
+        MS.Entity.resetId();
+        MS.Game.start();
     },
     
     exit : function() {
         DE.Util.log('GAME: Exiting state');
+        MS.Game.exit();
     },
     
-    draw : function() {},
+    draw : function() {
+        MS.Game.draw();
+    },
     
     update : function() {
-        if (typeof(this.update.subscribed) == 'undefined') {
-            this.update.subscribed = true;
-            DE.InputManager.subscribeAll(MS.Game.Input.parse);
-        }
+        MS.Game.update();
     }
 };

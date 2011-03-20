@@ -6,24 +6,13 @@ MS.State.Preload = {
     
     start : function() {
         DE.Util.log('PRELOAD: Starting state');
-        
-        // Loading screen
-        DE.Renderer.Object.create('title');
-        DE.Renderer.Object.create('loading');
-        
-        DE.InputManager.changeContext(this);
     },
     
     exit : function() {
         DE.Util.log('PRELOAD: Exiting state');
-        
-        DE.Renderer.Object.destroy('title');
-        DE.Renderer.Object.destroy('loading');
     },
     
     draw : function() {
-        $('#title').html('Monkey Spin');
-        $('#loading').html('Loading: ' + this.percentage + '% Completed');
     },
     
     update : function() {
@@ -45,7 +34,16 @@ MS.State.Preload = {
             
             // Stall on loading screen in debugging mode
             if (DE.Config.DEBUG) {
-                DE.InputManager.subscribeAll(this.next);
+                var that = this;
+                var next = function(event, type) {
+                    DE.Util.log('PRELOAD: Event (' + type + ') triggered');
+            
+                    // Don't really care about the event - just continue on input
+                    DE.InputManager.unsubscribeAll(next);
+                    DE.StateManager.pop();
+                    DE.StateManager.push(MS.State.Main);
+                }
+                DE.InputManager.subscribeAll(next);
             }
             else {
                 DE.StateManager.pop();
@@ -62,18 +60,5 @@ MS.State.Preload = {
         this.count += 1;
         this.percentage = (this.count / this.totalCount * 100).toFixed(0);
         DE.Util.log('PRELOAD: Percentage of images loaded: ' + this.percentage + '%');
-    },
-    
-    /**
-     * void next(obj event, string type)
-     * Processes input to proceed to the next state
-     */
-    next : function(event, type) {
-        DE.Util.log('PRELOAD: Event (' + type + ') triggered');
-        
-        // Don't really care about the event - just continue on input
-        DE.InputManager.unsubscribeAll(this.next);
-        DE.StateManager.pop();
-        DE.StateManager.push(MS.State.Main);
     }
 };

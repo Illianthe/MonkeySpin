@@ -2,12 +2,8 @@ body, .ui-content {
     background-color: #000;
 }
 
-#viewport {
+#vinecanvas {
     position: relative;
     background-color: #fff;
     overflow: hidden;
-}
-
-#viewport #div {
-    position: absolute;
 }

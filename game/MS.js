@@ -1,8 +1,6 @@
 var MS = {
     init : function() {
-        DE.InputManager.Keyboard.init();
-        DE.InputManager.Mouse.init();
-        DE.InputManager.Touch.init();
+        MS.Renderer.init();
         
         // Dynamically change resolution of the viewport
         $('#viewport').css({

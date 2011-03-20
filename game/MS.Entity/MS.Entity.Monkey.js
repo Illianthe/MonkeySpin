@@ -1,39 +1,21 @@
 MS.Entity.Monkey = function() {
-    /***************************************************************************
-     * Private methods and variables
-     **************************************************************************/
+    return $.extend(true, {}, MS.Entity.Base, {
+        velocity : null,
     
-    var _xPos;
-    var _yPos;
-    var _width;
-    var _height;
-    
-    /***************************************************************************
-     * Private methods and variables
-     **************************************************************************/
-    
-    var Monkey = {
         update : function() {
-            
-        },
-        
-        render : function() {
-            // Only render if object has world coordinates
-            if (_xPos != null && _yPos != null) {
-                
+            var P = MS.Game.Player;
+            var action = P.processAction();
+            switch (action) {
+                case P.Actions.CLIMB:
+                    this.climb();
+                    break;
+                case P.Actions.JUMP:
+                    this.jump();
+                    break;
+                case P.Actions.SPIN:
+                    this.spin();
+                    break;
             }
-        },
-        
-        getPos : function() {
-            return {
-                xPos : _xPos,
-                yPos : _yPos
-            }
-        },
-        
-        setPos : function(x, y) {
-            _xPos = x;
-            _yPos = y;
         },
         
         spin : function() {
@@ -47,6 +29,5 @@ MS.Entity.Monkey = function() {
         climb : function() {
             
         }
-    }
-    return Monkey;
+    });
 }

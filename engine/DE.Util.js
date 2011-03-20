@@ -33,5 +33,23 @@ DE.Util = {
             });
         }
         return result;
+    },
+    
+    /**
+     * int mod(int i, int j)
+     * Modulo operation with i as the dividend and j as the divisor.
+     * This function always returns a positive number (even when the dividend
+     * is negative), as opposed to JavaScript's native % operator.
+     */
+    mod : function(i, j) {
+        return ((i % j) + j) % j;
+    },
+    
+    /**
+     * int rand(int min, int max)
+     * Generates a random number between min and max inclusive
+     */
+    rand : function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 };

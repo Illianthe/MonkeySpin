@@ -3,33 +3,31 @@
  * controller; it must be parsed to determine the correct action to take.
  * This may vary depending on game data.
  */
-MS.Game.Input.js = {
-    parse : function(event, type) {
-        if (DE.InputManager.isTap(type)) {
-            parseTap(event);
-        }
-        else if (DE.InputManager.isClick(type)) {
-            parseClick(event);
-        }
-        else if (DE.InputManager.isKeypress(type)) {
-            parseKeypress(event);
-        }
+MS.Game.Input = {
+    start : function() {
+        DE.InputManager.Keyboard.subscribe(this.parseKeypress);
+    },
+    
+    exit : function() {
+        DE.InputManager.Keyboard.unsubscribe(this.parseKeypress);
     },
     
     parseKeypress : function(event) {
+        var P = MS.Game.Player;
+        
         switch (event.keyCode) {
             case 37:    // Left Arrow
             case 65:    // A
             case 39:    // Right Arrow
             case 68:    // D
-                MS.Game.Actions.spin();
+                P.setAction(P.Actions.SPIN);
                 break;
             case 38:    // Up Arrow
             case 87:    // W
-                MS.Game.Actions.climb();
+                P.setAction(P.Actions.CLIMB);
                 break;
             case 32:    // Space
-                MS.Game.Actions.jump();
+                P.setAction(P.Actions.JUMP);
                 break;
         }
     },

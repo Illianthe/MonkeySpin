@@ -10,17 +10,41 @@
     <link rel="stylesheet" type="text/css" href="library/jquery.mobile-1.0a3.min.css" />
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     
+    <!-- Libraries -->
     <script type="text/javascript" src="library/jquery-1.5.min.js"></script>
-    <script type="text/javascript" src="library/jquery.mobile-1.0a3.min.js"></script>
-    <script type="text/javascript" src="library/modernizr-1.6.min.js"></script>
-    <script type="text/javascript" src="game.js"></script>
+    
+    <!-- Game scripts (should be combined when done) -->
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="engine/DE.js"></script>
+    <script type="text/javascript" src="engine/DE.Config.js"></script>
+    <script type="text/javascript" src="engine/DE.InputManager.js"></script>
+    <script type="text/javascript" src="engine/DE.Renderer.js"></script>
+    <script type="text/javascript" src="engine/DE.StateManager.js"></script>
+    <script type="text/javascript" src="engine/DE.Util.js"></script>
+    <script type="text/javascript" src="game/MS.js"></script>
+    <script type="text/javascript" src="game/MS.Assets.js"></script>
+    <script type="text/javascript" src="game/MS.Config.js"></script>
+    <script type="text/javascript" src="game/MS.Entity/MS.Entity.js"></script>
+    <script type="text/javascript" src="game/MS.Entity/MS.Entity.Banana.js"></script>
+    <script type="text/javascript" src="game/MS.Entity/MS.Entity.Base.js"></script>
+    <script type="text/javascript" src="game/MS.Entity/MS.Entity.Monkey.js"></script>
+    <script type="text/javascript" src="game/MS.Entity/MS.Entity.Vine.js"></script>
+    <script type="text/javascript" src="game/MS.Game/MS.Game.js"></script>
+    <script type="text/javascript" src="game/MS.Game/MS.Game.Input.js"></script>
+    <script type="text/javascript" src="game/MS.Game/MS.Game.Map.js"></script>
+    <script type="text/javascript" src="game/MS.Game/MS.Game.Player.js"></script>
+    <script type="text/javascript" src="game/MS.Renderer.js"></script>
+    <script type="text/javascript" src="game/MS.State/MS.State.js"></script>
+    <script type="text/javascript" src="game/MS.State/MS.State.About.js"></script>
+    <script type="text/javascript" src="game/MS.State/MS.State.Game.js"></script>
+    <script type="text/javascript" src="game/MS.State/MS.State.Main.js"></script>
+    <script type="text/javascript" src="game/MS.State/MS.State.Options.js"></script>
+    <script type="text/javascript" src="game/MS.State/MS.State.Preload.js"></script>
+    
+    <!-- Complete minified script -->
 </head>
 
 <body>
-    <div data-role="page" data-fullscreen="true">
-        <div data-role="content">
-            <div id="viewport"></div>
-        </div>
-    </div>
+    <canvas id="vinecanvas"></canvas>
 </body>
 </html>
