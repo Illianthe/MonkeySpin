@@ -1,6 +1,7 @@
 MS.Game.Player = {
     nextAction : null,
     character : null,
+    movement : 0,        // How much the player has moved
     
     /**
      * Enumerator - list of possible actions that the player can take
@@ -25,7 +26,7 @@ MS.Game.Player = {
      * Gets the next action queued and returns it, setting the queue to null
      */
     processAction : function() {
-        var result = nextAction;
+        var result = this.nextAction;
         nextAction = null;
         return result;
     },
@@ -33,5 +34,12 @@ MS.Game.Player = {
     start : function() {
         this.nextAction = null;
         this.character = null;
+        this.movement = 0;
+    },
+    
+    update : function() {
+        this.character.update();
+        this.character.yPos += 10;
+        MS.Game.Map.range += 10;
     }
 }

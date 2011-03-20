@@ -14,6 +14,8 @@ MS.Renderer = {
     
     /**
      * void draw(Entity obj, Entity.Entities type)
+     * Draws entities to the rendering surface. Currently, the camera
+     * pivots around the monkey's position.
      */
     draw : function(obj, type) {
         var E = MS.Entity.Entities;
@@ -26,10 +28,7 @@ MS.Renderer = {
                 this.vineContext.drawImage(
                     obj.img,
                     obj.xPos,
-                    DE.Util.mod(
-                        obj.yPos - MS.Game.Player.character.yPos,
-                        MS.Config.Map.TILESIZE * MS.Config.Map.YTILECOUNT
-                    )
+                    obj.yPos - MS.Game.Player.character.yPos
                 );
                 break;
         }

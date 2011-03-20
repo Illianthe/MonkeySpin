@@ -2,15 +2,15 @@ MS.Game = {
     start : function() {
         MS.Game.Input.start();
         MS.Game.Player.start();
-        MS.Game.Map.start();    
+        MS.Game.Map.start();
         
         // Creating temporary start screen...
-        MS.Game.Player.character = MS.Entity.create('Monkey', 128, 0, 40, 40);
+        MS.Game.Player.character = MS.Entity.create('Monkey', 80, 40, 40, 40);
         for (var i = 0; i < MS.Config.Map.YTILECOUNT; i += 1) {
             var M = MS.Game.Map;
-            var a = MS.Entity.createAtTile('Vine', 1, i, 0, 0, 10, 40);
-            var b = MS.Entity.createAtTile('Vine', 3, i, 0, 0, 10, 40);
-            var c = MS.Entity.createAtTile('Vine', 5, i, 0, 0, 10, 40);
+            var a = MS.Entity.createAtTile('Vine', 1, i, 18, 0, 10, 40);
+            var b = MS.Entity.createAtTile('Vine', 3, i, 18, 0, 10, 40);
+            var c = MS.Entity.createAtTile('Vine', 5, i, 18, 0, 10, 40);
             M.addObject(a, M.staticMap, 1, i);
             M.addObject(b, M.staticMap, 3, i);
             M.addObject(c, M.staticMap, 5, i);
@@ -38,7 +38,8 @@ MS.Game = {
     },
     
     update : function() {
-        
+        MS.Game.Player.update();
+        MS.Game.Map.update();
     },
     
     draw : function() {
