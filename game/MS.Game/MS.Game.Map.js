@@ -71,14 +71,17 @@ MS.Game.Map = {
     },
     
     /**
-     * array findNeighbours(Entity obj)
+     * obj findNeighbours(Entity obj)
      * Takes an entity (with corresponding positions and dimensions) and
      * returns the tiles that it overlaps
      */
-    findNeighbours : function(obj) {
-        var result = new Array();
-        var pos = obj.getPos();
-        var dim = obj.getDimensions();
+    findNeighbours : function(obj, xOffset, yOffset) {
+        var result = {};
+        result.startX = Math.floor((obj.xPos - (xOffset || 0)) / MS.Config.Map.TILESIZE);
+        result.startY = Math.floor((obj.yPos - (yOffset || 0)) / MS.Config.Map.TILESIZE);
+        result.endX = Math.floor((obj.xPos + obj.width - (xOffset || 0)) / MS.Config.Map.TILESIZE);
+        result.endY = Math.floor((obj.yPos + obj.height - (yOffset || 0)) / MS.Config.Map.TILESIZE);
+        return result;
     },
     
     addLastRow : function(row) {

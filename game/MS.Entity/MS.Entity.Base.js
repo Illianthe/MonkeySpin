@@ -5,6 +5,7 @@ MS.Entity.Base = {
     height : null,
     id : null,
     img : null,
+    type : null,
     
     update : {},
     draw : {},

@@ -1,19 +1,23 @@
 MS.Entity.Monkey = function() {
     return $.extend(true, {}, MS.Entity.Base, {
-        velocity : 5,            // Falling speed
         dirty : true,            // Redraw?
+        velocity : 5,            // Falling speed
+        startX : 100,
+        startY : 40,
+        totalMovement : 0,
         orientation : 'left',    // Orientation on the vines
+        vine : 'middle',         // Attached to current vine
+        hanging : true,
         spinning : false,
         spinDelay : null,
         jumping : false,
         jumpDelay : null,
         climbing : false,
         climbDelay : null,
+        
+        type : MS.Entity.Entities.MONKEY,
     
         update : function() {
-            // Move
-            this.yPos += this.velocity;
-            
             // Process input
             var P = MS.Game.Player;
             var action = P.processAction();
@@ -39,6 +43,19 @@ MS.Entity.Monkey = function() {
             if (this.spinning && time - this.spinDelay > 500) {
                 this.spin();
             }
+            
+            // Check for collisions
+            this.hanging = false;
+            this.collisionDetection();
+            
+            // Monkey must be hanging from a vine
+            if (!this.hanging) {
+                this.die();
+            }
+            
+            // Move
+            this.yPos += this.velocity;
+            this.totalMovement += this.velocity;
         },
         
         draw : function() {
@@ -67,6 +84,58 @@ MS.Entity.Monkey = function() {
         
         climb : function() {
             
+        },
+        
+        die : function() {
+            DE.Util.log('GAME: Dying');
+        },
+        
+        /**
+         * void collisionDetection()
+         * Check surrounding tiles to see if this object collides
+         * with any others
+         */
+        collisionDetection : function() {
+            var tiles = MS.Game.Map.findNeighbours(this, 0, this.totalMovement);
+            for (var x = tiles.startX; x <= tiles.endX; x += 1) {
+                for (var y = tiles.startY; y <= tiles.endY; y += 1) {
+                    var M = MS.Game.Map.staticMap;
+                    var length = M[x][y].length;
+                    for (var i = 0; i < length; i += 1) {
+                        this.processCollision(M[x][y][i], x, y, i);
+                    }
+                }
+            }
+        },
+        
+        /**
+         * void processCollision(Entity obj, [int x], [int y], [int i])
+         * Takes an entity along with its position in the map
+         * and checks for collisions
+         */
+        processCollision : function(obj, x, y, i) {
+            if (!this.isOverlapping(this, obj)) {
+                return;
+            }
+            var E = MS.Entity.Entities;
+            var M = MS.Game.Map.staticMap;
+            switch (obj.type) {
+                case E.VINE:
+                    this.hanging = true;
+                    break;
+                case E.BANANA:
+                    break;
+            }
+        },
+        
+        isOverlapping : function(obj1, obj2) {
+            // Check if obj1 lies within the coordinates of obj2
+            // using bounding box collision detection
+            if (obj1.xPos > obj2.xPos && obj1.xPos < obj2.xPos + obj2.width) return true;
+            if (obj1.xPos + obj1.width > obj2.xPos && obj1.xPos + obj1.width < obj2.xPos + obj2.width) return true;
+            if (obj1.yPos > obj2.yPos && obj1.yPos < obj2.yPos + obj2.height) return true;
+            if (obj1.yPos + obj1.height > obj2.yPos && obj1.yPos + obj1.height < obj2.yPos + obj2.height) return true;
+            return false;
         }
     });
 }

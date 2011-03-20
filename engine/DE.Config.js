@@ -1,3 +1,3 @@
 DE.Config = {
-    DEBUG : false
+    DEBUG : true
 };
