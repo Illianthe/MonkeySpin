@@ -5,6 +5,10 @@ MS.Renderer = {
     monkeyContext : null,
     cameraYPivot : MS.Config.Map.TILESIZE,
     
+    // For scrolling backgrounds
+    bgCloudsPos : 0,
+    bgTreesPos : 0,
+    
     init : function() {
         this.vineCanvas = $('#vinecanvas')[0];
         this.vineContext = this.vineCanvas.getContext("2d");
@@ -44,5 +48,22 @@ MS.Renderer = {
                 );
                 break;
         }        
+    },
+    
+    drawBackground : function() {
+        $('#bg_0_1').css('-webkit-transform', 'translate3d(0, ' + this.bgCloudsPos + 'px, 0)');
+        $('#bg_0_2').css('-webkit-transform', 'translate3d(0, ' + this.bgCloudsPos + 'px, 0)');
+        $('#bg_1_1').css('-webkit-transform', 'translate3d(0, ' + this.bgTreesPos + 'px, 0)');
+        $('#bg_1_2').css('-webkit-transform', 'translate3d(0, ' + this.bgTreesPos + 'px, 0)');
+        
+        this.bgCloudsPos -= 1;
+        this.bgTreesPos -= 3;
+        
+        if (this.bgCloudsPos <= -MS.Assets.Images.BGCLOUDS.height) {
+            this.bgCloudsPos = 0;
+        }
+        if (this.bgTreesPos <= -MS.Assets.Images.BGTREES.height) {
+            this.bgTreesPos = 0;
+        }
     }
 }

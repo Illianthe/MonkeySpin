@@ -45,5 +45,6 @@ MS.Game = {
     draw : function() {
         MS.Game.Map.draw();
         MS.Game.Player.draw();
+        MS.Renderer.drawBackground();
     }
 }

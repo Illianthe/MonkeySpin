@@ -6,6 +6,8 @@ body, .ui-content {
     position: relative;
     width: 320px;
     height: 480px;
+    overflow: hidden;
+    background-color: #ffe2b2;
 }
 
 canvas {
@@ -15,6 +17,38 @@ canvas {
     overflow: hidden;
 }
 
+#bg_0_1, #bg_0_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 1470px;
+    z-index: 50;
+    background: url('media/images/bgclouds.png');
+}
+
+#bg_0_2 {
+    top: 1470px;
+}
+
+#bg_1_1, #bg_1_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 1470px;
+    z-index: 100;
+    background: url('media/images/bgtrees.png');
+}
+
+#bg_1_2 {
+    top: 1470px;
+}
+
 #vinecanvas {
-    background-color: #fff;
+    z-index: 150;
+}
+
+#monkeycanvas {
+    z-index: 200;
 }
