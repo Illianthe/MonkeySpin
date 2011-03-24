@@ -51,10 +51,10 @@ MS.Renderer = {
     },
     
     drawBackground : function() {
-        $('#bg_0_1').css('-webkit-transform', 'translate3d(0, ' + this.bgCloudsPos + 'px, 0)');
-        $('#bg_0_2').css('-webkit-transform', 'translate3d(0, ' + this.bgCloudsPos + 'px, 0)');
-        $('#bg_1_1').css('-webkit-transform', 'translate3d(0, ' + this.bgTreesPos + 'px, 0)');
-        $('#bg_1_2').css('-webkit-transform', 'translate3d(0, ' + this.bgTreesPos + 'px, 0)');
+        this.transform('#bg_0_1', 0, this.bgCloudsPos, 0);
+        this.transform('#bg_0_2', 0, this.bgCloudsPos, 0);
+        this.transform('#bg_1_1', 0, this.bgTreesPos, 0);
+        this.transform('#bg_1_2', 0, this.bgTreesPos, 0);
         
         this.bgCloudsPos -= 1;
         this.bgTreesPos -= 3;
@@ -65,5 +65,14 @@ MS.Renderer = {
         if (this.bgTreesPos <= -MS.Assets.Images.BGTREES.height) {
             this.bgTreesPos = 0;
         }
+    },
+    
+    transform : function(id, x, y, z) {
+        $(id).css({
+            '-webkit-transform' : 'translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px)',
+            '-moz-transform' : 'translate(' + x + 'px, ' + y + 'px)',
+            '-o-transform' : 'translate(' + x + 'px, ' + y + 'px)',
+            '-ms-transform' : 'translate(' + x + 'px, ' + y + 'px)'
+        });
     }
 }
