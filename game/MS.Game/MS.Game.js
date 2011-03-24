@@ -7,6 +7,7 @@ MS.Game = {
         
         // Creating temporary start screen...
         MS.Game.Player.character = MS.Entity.create('Monkey', 137, 40, 50, 79);
+        MS.Game.Player.character.img = MS.Assets.Images.MONKEY;
         for (var i = 0; i < MS.Config.Map.YTILECOUNT; i += 1) {
             var M = MS.Game.Map;
             var a = MS.Entity.createAtTile('Vine', 1, i, 18, 0, 10, 40);

@@ -15,7 +15,6 @@ MS.Entity.Monkey = function() {
         climbing : false,
         climbDelay : null,
         
-        img : MS.Assets.Images.MONKEY,
         type : MS.Entity.Entities.MONKEY,
     
         update : function() {
