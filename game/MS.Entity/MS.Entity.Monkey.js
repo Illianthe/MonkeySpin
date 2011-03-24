@@ -1,12 +1,12 @@
 MS.Entity.Monkey = function() {
     return $.extend(true, {}, MS.Entity.Base, {
-        dirty : true,            // Redraw?
-        velocity : 5,            // Falling speed
+        dirty : true,             // Redraw?
+        velocity : 5,             // Falling speed
         startX : 137,
         startY : 40,
         totalMovement : 0,
         orientation : 'right',    // Orientation on the vines
-        vine : 'middle',         // Attached to current vine
+        vine : 'middle',          // Attached to current vine
         hanging : true,
         spinning : false,
         spinDelay : null,
@@ -89,6 +89,7 @@ MS.Entity.Monkey = function() {
         
         die : function() {
             DE.Util.log('GAME: Dying');
+            console.log(this.yPos);
         },
         
         /**
@@ -132,11 +133,12 @@ MS.Entity.Monkey = function() {
         isOverlapping : function(obj1, obj2) {
             // Check if obj1 lies within the coordinates of obj2
             // using bounding box collision detection
-            if (obj1.xPos > obj2.xPos && obj1.xPos < obj2.xPos + obj2.width) return true;
-            if (obj1.xPos + obj1.width > obj2.xPos && obj1.xPos + obj1.width < obj2.xPos + obj2.width) return true;
-            if (obj1.yPos > obj2.yPos && obj1.yPos < obj2.yPos + obj2.height) return true;
-            if (obj1.yPos + obj1.height > obj2.yPos && obj1.yPos + obj1.height < obj2.yPos + obj2.height) return true;
-            return false;
+            var result = false;
+            if (obj1.xPos >= obj2.xPos && obj1.xPos <= obj2.xPos + obj2.width) result = true;
+            if (obj1.xPos + obj1.width >= obj2.xPos && obj1.xPos + obj1.width <= obj2.xPos + obj2.width) result = true;
+            if (obj1.yPos >= obj2.yPos && obj1.yPos <= obj2.yPos + obj2.height) result = true;
+            if (obj1.yPos + obj1.height >= obj2.yPos && obj1.yPos + obj1.height <= obj2.yPos + obj2.height) result = true;
+            return result;
         }
     });
 }
