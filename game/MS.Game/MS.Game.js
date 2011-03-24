@@ -3,6 +3,7 @@ MS.Game = {
         MS.Game.Input.start();
         MS.Game.Player.start();
         MS.Game.Map.start();
+        $('#music')[0].play();
         
         // Creating temporary start screen...
         MS.Game.Player.character = MS.Entity.create('Monkey', 100, 40, 40, 40);
@@ -35,6 +36,7 @@ MS.Game = {
     
     exit : function() {
         MS.Game.Input.exit();
+        $('#music')[0].stop();
     },
     
     update : function() {
