@@ -6,7 +6,7 @@ MS.Game = {
         $('#music')[0].play();
         
         // Creating temporary start screen...
-        MS.Game.Player.character = MS.Entity.create('Monkey', 100, 40, 40, 40);
+        MS.Game.Player.character = MS.Entity.create('Monkey', 137, 40, 40, 40);
         for (var i = 0; i < MS.Config.Map.YTILECOUNT; i += 1) {
             var M = MS.Game.Map;
             var a = MS.Entity.createAtTile('Vine', 1, i, 18, 0, 10, 40);

@@ -2,10 +2,10 @@ MS.Entity.Monkey = function() {
     return $.extend(true, {}, MS.Entity.Base, {
         dirty : true,            // Redraw?
         velocity : 5,            // Falling speed
-        startX : 100,
+        startX : 137,
         startY : 40,
         totalMovement : 0,
-        orientation : 'left',    // Orientation on the vines
+        orientation : 'right',    // Orientation on the vines
         vine : 'middle',         // Attached to current vine
         hanging : true,
         spinning : false,
@@ -15,6 +15,7 @@ MS.Entity.Monkey = function() {
         climbing : false,
         climbDelay : null,
         
+        img : MS.Assets.Images.MONKEY,
         type : MS.Entity.Entities.MONKEY,
     
         update : function() {

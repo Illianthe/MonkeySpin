@@ -37,8 +37,13 @@ MS.Renderer = {
                 break;
             case E.MONKEY:
                 this.monkeyContext.clearRect(0, 0, this.monkeyCanvas.width, this.monkeyCanvas.height);
-                this.monkeyContext.fillStyle = '#993300';
-                this.monkeyContext.fillRect(obj.xPos, this.cameraYPivot, obj.width, obj.height);
+                //this.monkeyContext.fillStyle = '#993300';
+                //this.monkeyContext.fillRect(obj.xPos, this.cameraYPivot, obj.width, obj.height);
+                this.monkeyContext.drawImage(
+                    obj.img,
+                    obj.xPos,
+                    this.cameraYPivot
+                );
                 break;
             case E.VINE:
                 this.vineContext.drawImage(
