@@ -2,8 +2,6 @@ MS.Entity.Monkey = function() {
     return $.extend(true, {}, MS.Entity.Base, {
         dirty : true,             // Redraw?
         velocity : 5,             // Falling speed
-        startX : 137,
-        startY : 40,
         totalMovement : 0,
         orientation : 'right',    // Orientation on the vines
         vine : 'middle',          // Attached to current vine
@@ -88,7 +86,6 @@ MS.Entity.Monkey = function() {
         
         die : function() {
             DE.Util.log('GAME: Dying');
-            console.log(this.yPos);
         },
         
         /**

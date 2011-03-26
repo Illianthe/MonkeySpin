@@ -31,11 +31,10 @@ MS.Renderer = {
      * pivots around the monkey's position.
      */
     draw : function(obj, type) {
-        var E = MS.Entity.Entities;
         switch (type) {
-            case E.BANANA:
+            case MS.Entity.Entities.BANANA:
                 break;
-            case E.MONKEY:
+            case MS.Entity.Entities.MONKEY:
                 this.monkeyContext.clearRect(0, 0, this.monkeyCanvas.width, this.monkeyCanvas.height);
                 //this.monkeyContext.fillStyle = '#993300';
                 //this.monkeyContext.fillRect(obj.xPos, this.cameraYPivot, obj.width, obj.height);
@@ -45,7 +44,7 @@ MS.Renderer = {
                     this.cameraYPivot
                 );
                 break;
-            case E.VINE:
+            case MS.Entity.Entities.VINE:
                 this.vineContext.drawImage(
                     obj.img,
                     obj.xPos,
@@ -56,10 +55,10 @@ MS.Renderer = {
     },
     
     drawBackground : function() {
-        this.transform('#bg_0_1', 0, this.bgCloudsPos, 0);
-        this.transform('#bg_0_2', 0, this.bgCloudsPos, 0);
-        this.transform('#bg_1_1', 0, this.bgTreesPos, 0);
-        this.transform('#bg_1_2', 0, this.bgTreesPos, 0);
+        this.transform('bg_0_1', 0, this.bgCloudsPos, 0);
+        this.transform('bg_0_2', 0, this.bgCloudsPos, 0);
+        this.transform('bg_1_1', 0, this.bgTreesPos, 0);
+        this.transform('bg_1_2', 0, this.bgTreesPos, 0);
         
         this.bgCloudsPos -= 1;
         this.bgTreesPos -= 3;
@@ -73,11 +72,10 @@ MS.Renderer = {
     },
     
     transform : function(id, x, y, z) {
-        $(id).css({
-            '-webkit-transform' : 'translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px)',
-            '-moz-transform' : 'translate(' + x + 'px, ' + y + 'px)',
-            '-o-transform' : 'translate(' + x + 'px, ' + y + 'px)',
-            '-ms-transform' : 'translate(' + x + 'px, ' + y + 'px)'
-        });
+        var elt = document.getElementById(id);
+        elt.style.WebkitTransform = 'translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px)';
+        elt.style.MozTransform = 'translate(' + x + 'px, ' + y + 'px)';
+        elt.style.OTransform = 'translate(' + x + 'px, ' + y + 'px)';
+        elt.style.msTransform = 'translate(' + x + 'px, ' + y + 'px)';
     }
 }

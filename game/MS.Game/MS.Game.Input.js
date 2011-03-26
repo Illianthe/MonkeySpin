@@ -13,21 +13,19 @@ MS.Game.Input = {
     },
     
     parseKeypress : function(event) {
-        var P = MS.Game.Player;
-        
         switch (event.which) {
             case 37:    // Left Arrow
             case 65:    // A
             case 39:    // Right Arrow
             case 68:    // D
-                P.setAction(P.Actions.SPIN);
+                MS.Game.Player.setAction(MS.Game.Player.Actions.SPIN);
                 break;
             case 38:    // Up Arrow
             case 87:    // W
-                P.setAction(P.Actions.CLIMB);
+                MS.Game.Player.setAction(MS.Game.Player.Actions.CLIMB);
                 break;
             case 32:    // Space
-                P.setAction(P.Actions.JUMP);
+                MS.Game.Player.setAction(MS.Game.Player.Actions.JUMP);
                 break;
         }
     },

@@ -1,4 +1,8 @@
 var MS = {
+    loops : 0,
+    tick : 0,
+    nextTick : null,
+    
     init : function() {
         MS.Renderer.init();
         
@@ -11,23 +15,23 @@ var MS = {
         // First state
         DE.StateManager.push(MS.State.Preload);
         
+        this.tick = 1000 / MS.Config.FPS;
         setInterval(MS.run, 1000 / MS.Config.REFRESHRATE);
     },
     
     run : function() {
-        var loops = 0;
-        var tick = 1000 / MS.Config.FPS;
-        var nextTick = (new Date).getTime();
+        this.loops = 0;
+        this.nextTick = (new Date).getTime();
         
         // If there is a slowdown, update tries to catch up
-        while ((new Date).getTime() >= nextTick && loops < MS.Config.MAXFRAMESKIP) {
+        while ((new Date).getTime() >= this.nextTick && this.loops < MS.Config.MAXFRAMESKIP) {
             DE.StateManager.update();
-            nextTick += tick;
-            loops += 1;
+            this.nextTick += this.tick;
+            this.loops += 1;
         }
         
         // Draw only when there is an update
-        if (loops) {
+        if (this.loops) {
             DE.StateManager.draw();
         }
     }
