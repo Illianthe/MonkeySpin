@@ -3,9 +3,7 @@ body, .ui-content {
 }
 
 #container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 320px;
     height: 480px;
     overflow: hidden;

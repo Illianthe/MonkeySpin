@@ -88,6 +88,11 @@ DE.InputManager.Mouse.init = function() {
 DE.InputManager.Touch = $.extend(true, {}, DE.InputManager.Base);
 DE.InputManager.Touch.init = function() {
     var that = this;
+    $(document).ready(function() {
+        touchMove = function(event) {
+            event.preventDefault();
+        }
+    });
     $(document).bind('tap', function(event) {
         that.trigger(event, 'tap');
     });
