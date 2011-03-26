@@ -32,8 +32,23 @@ MS.State.Preload = {
             // Minor change for when there are no assets to be loaded
             this.percentage = this.percentage || 100; 
             
-            DE.StateManager.pop();
-            DE.StateManager.push(MS.State.Main);
+            // Stall on loading screen in debugging mode
+            if (DE.Config.DEBUG) {
+                var that = this;
+                var next = function(event, type) {
+                    DE.Util.log('PRELOAD: Event (' + type + ') triggered');
+            
+                    // Don't really care about the event - just continue on input
+                    DE.InputManager.unsubscribeAll(next);
+                    DE.StateManager.pop();
+                    DE.StateManager.push(MS.State.Main);
+                }
+                DE.InputManager.subscribeAll(next);
+            }
+            else {
+                DE.StateManager.pop();
+                DE.StateManager.push(MS.State.Main);
+            }
         }
     },
     
