@@ -1,22 +1,22 @@
-MS.Entity.Base = {
-    xPos : null,
-    yPos : null,
-    width : null,
-    height : null,
-    id : null,
-    img : null,
-    type : null,
+MS.Entity.Base = function() {
+    this.xPos = null;
+    this.yPos = null;
+    this.width = null;
+    this.height = null;
+    this.id = null;
+    this.img = null;
+    this.type = null;
     
-    update : {},
-    draw : {},
+    this.update = function() {};
+    this.draw = function() {};
     
-    setPos : function(x, y) {
-        this.xPos = x;
-        this.yPos = y;
-    },
-    
-    setDimensions : function(width, height) {
+    this.setDimensions = function(width, height) {
         this.width = width;
         this.height = height;
-    },
+    }
+    
+    this.setPos = function(x, y) {
+        this.xPos = x;
+        this.yPos = y;
+    }
 }

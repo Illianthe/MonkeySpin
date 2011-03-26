@@ -15,15 +15,16 @@ MS.Entity = {
         var result = null;
         switch (entity) {
             case this.Entities.BANANA:
-                result = MS.Entity.Banana();
+                result = new MS.Entity.Banana();
                 break;
             case this.Entities.MONKEY:
-                result = MS.Entity.Monkey();
+                result = new MS.Entity.Monkey();
                 break;
             case this.Entities.VINE:
-                result = MS.Entity.Vine();
+                result = new MS.Entity.Vine();
                 break;
         }
+        console.log(result);
         if (result != null) {
             result.setPos(x || 0, y || 0);
             result.setDimensions(width || 0, height || 0);

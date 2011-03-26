@@ -1,9 +1,9 @@
 MS.Entity.Vine = function() {
-    return $.extend(true, {}, MS.Entity.Base, {
-        type : MS.Entity.Entities.VINE,
-        
-        draw : function() {
-            MS.Renderer.draw(this, MS.Entity.Entities.VINE);
-        }
-    });
+    this.type = MS.Entity.Entities.VINE;
+
+    this.draw = function() {
+        MS.Renderer.draw(this, MS.Entity.Entities.VINE);
+    }
 }
+
+MS.Entity.Vine.prototype = new MS.Entity.Base();
