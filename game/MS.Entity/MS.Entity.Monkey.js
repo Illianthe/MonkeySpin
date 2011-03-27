@@ -1,15 +1,17 @@
 MS.Entity.Monkey = function() {
-    this.dirty = true;             // Redraw?
-    this.oldXPos = 0;
+    this.dirty = true;  // Redraw?
+    this.oldXPos = 0; // Last position of monkey
     this.oldYPos = 0;
-    this.velocity = 5;             // Falling speed
-    this.totalMovement = 0;
-    this.orientation = 'right';    // Orientation on the vines
-    this.vine = 'middle';          // Attached to current vine
-    this.hanging = true;
-    this.spinning = false;
+    this.startTime = new Date().getTime(); // Game start time (to adjust speed)
+    this.curTime = 0;
+    this.velocity = 3;  // Falling speed
+    this.totalMovement = 0;  // Distance moved in total
+    this.orientation = 'right';  // Orientation on the vines
+    this.vine = 'middle';  // Attached to current vine
+    this.hanging = true;  // Connected to a vine?
+    this.spinning = false;  // Currently spinning?
     this.spinDelay = null;
-    this.jumping = false;
+    this.jumping = false;  // Currently jumping?
     this.jumpDelay = null;
     this.climbing = false;
     this.climbDelay = null;
@@ -37,9 +39,28 @@ MS.Entity.Monkey = function() {
         }
         
         // Process actions if they're still occurring
-        var time = new Date().getTime();
+        this.curTime = new Date().getTime();
+        
+        // Adjust speed if enough time has elapsed
+        if (this.curTime - this.startTime > 60000) {
+            DE.Util.log('GAME: Changed velocity after 60 seconds')
+            this.velocity = 9;
+        }
+        else if (this.curTime - this.startTime > 45000) {
+            DE.Util.log('GAME: Changed velocity after 45 seconds')
+            this.velocity = 7;
+        }
+        else if (this.curTime - this.startTime > 30000) {
+            DE.Util.log('GAME: Changed velocity after 30 seconds')
+            this.velocity = 5;
+        }
+        else if (this.curTime - this.startTime > 15000) {
+            DE.Util.log('GAME: Changed velocity after 15 seconds')
+            this.velocity = 4;
+        }
+        
         // Simulate spinning for half a second (animation)
-        if (this.spinning && time - this.spinDelay > 0) {
+        if (this.spinning && this.curTime - this.spinDelay > 0) {
             this.spin();
         }
         
