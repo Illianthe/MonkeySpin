@@ -10,7 +10,7 @@ MS.Config = {
     
     Map : {
         TILESIZE : 40,     // Tile size in pixels
-        XTILECOUNT : 8,    // Number of tiles on the x axis
+        XTILECOUNT : 7,    // Number of tiles on the x axis
         YTILECOUNT : 14    // Number of tiles on the y axis
     }
 };

@@ -45,10 +45,10 @@ canvas {
     top: 1470px;
 }
 
-#vinecanvas {
+#staticCanvas {
     z-index: 150;
 }
 
-#monkeycanvas {
+#monkeyCanvas {
     z-index: 200;
 }

@@ -1,6 +1,6 @@
 MS.Renderer = {
-    vineCanvas : null,
-    vineContext : null,
+    staticCanvas : null,
+    staticContext : null,
     monkeyCanvas : null,
     monkeyContext : null,
     cameraYPivot : MS.Config.Map.TILESIZE,
@@ -10,18 +10,18 @@ MS.Renderer = {
     bgTreesPos : 0,
     
     init : function() {
-        this.vineCanvas = $('#vinecanvas')[0];
-        this.vineContext = this.vineCanvas.getContext("2d");
-        this.vineCanvas.width = MS.Config.Resolution.WIDTH;
-        this.vineCanvas.height = MS.Config.Resolution.HEIGHT;
+        this.staticCanvas = $('#staticCanvas')[0];
+        this.staticContext = this.staticCanvas.getContext("2d");
+        this.staticCanvas.width = MS.Config.Resolution.WIDTH;
+        this.staticCanvas.height = MS.Config.Resolution.HEIGHT;
         
-        this.monkeyCanvas = $('#monkeycanvas')[0];
+        this.monkeyCanvas = $('#monkeyCanvas')[0];
         this.monkeyContext = this.monkeyCanvas.getContext("2d");
         this.monkeyCanvas.width = MS.Config.Resolution.WIDTH;
         this.monkeyCanvas.height = MS.Config.Resolution.HEIGHT;
         
         // Center canvas
-        this.vineContext.translate(20, 0);
+        this.staticContext.translate(20, 0);
         this.monkeyContext.translate(20, 0);
     },
     
@@ -34,10 +34,11 @@ MS.Renderer = {
         switch (type) {
             case MS.Entity.Entities.BANANA:
                 break;
+            case MS.Entity.Entities.BEE:
+                break;
             case MS.Entity.Entities.MONKEY:
-                this.monkeyContext.clearRect(0, 0, this.monkeyCanvas.width, this.monkeyCanvas.height);
-                //this.monkeyContext.fillStyle = '#993300';
-                //this.monkeyContext.fillRect(obj.xPos, this.cameraYPivot, obj.width, obj.height);
+                // Clear previous instance and redraw
+                this.monkeyContext.clearRect(obj.oldXPos, this.cameraYPivot, obj.width, obj.height);
                 this.monkeyContext.drawImage(
                     obj.img,
                     obj.xPos,
@@ -45,13 +46,27 @@ MS.Renderer = {
                 );
                 break;
             case MS.Entity.Entities.VINE:
-                this.vineContext.drawImage(
+                this.staticContext.drawImage(
                     obj.img,
                     obj.xPos,
                     obj.yPos - MS.Game.Player.character.yPos
                 );
                 break;
         }        
+    },
+    
+    clear : function(obj, type) {
+        switch (type) {
+            case MS.Entity.Entities.BANANA:
+                break;
+            case MS.Entity.Entities.BEE:
+                break;
+            case MS.Entity.Entities.MONKEY:
+                break;
+            case MS.Entity.Entities.VINE:
+                this.staticContext.clearRect(obj.xPos, obj.yPos  - MS.Game.Player.character.yPos, obj.width, obj.height);
+                break;
+        }
     },
     
     drawBackground : function() {

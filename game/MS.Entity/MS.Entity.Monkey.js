@@ -1,5 +1,7 @@
 MS.Entity.Monkey = function() {
     this.dirty = true;             // Redraw?
+    this.oldXPos = 0;
+    this.oldYPos = 0;
     this.velocity = 5;             // Falling speed
     this.totalMovement = 0;
     this.orientation = 'right';    // Orientation on the vines
@@ -51,6 +53,7 @@ MS.Entity.Monkey = function() {
         }
         
         // Move
+        this.oldYPos = this.yPos;
         this.yPos += this.velocity;
         this.totalMovement += this.velocity;
     }
@@ -63,6 +66,7 @@ MS.Entity.Monkey = function() {
     }
     
     this.spin = function() {
+        this.oldXPos = this.xPos;
         if (this.orientation == 'left') {
             this.orientation = 'right';
             this.xPos += 40;
@@ -84,7 +88,6 @@ MS.Entity.Monkey = function() {
     }
     
     this.die = function() {
-        DE.Util.log('GAME: Dying');
     }
     
     /**
@@ -111,7 +114,7 @@ MS.Entity.Monkey = function() {
      * and checks for collisions
      */
     this.processCollision = function(obj, x, y, i) {
-        if (!this.isOverlapping(this, obj)) {
+        if (!obj.tangible || !this.isOverlapping(this, obj)) {
             return;
         }
         var E = MS.Entity.Entities;

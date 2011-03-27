@@ -3,6 +3,7 @@ MS.Entity.Base = function() {
     this.yPos = null;
     this.width = null;
     this.height = null;
+    this.tangible = false;
     this.id = null;
     this.img = null;
     this.type = null;

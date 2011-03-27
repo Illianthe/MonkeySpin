@@ -3,6 +3,7 @@ MS.Entity = {
     
     Entities : {
         BANANA : 'Banana',
+        BEE : 'Bee',
         MONKEY : 'Monkey',
         VINE : 'Vine'
     },
@@ -17,12 +18,17 @@ MS.Entity = {
             case this.Entities.BANANA:
                 result = new MS.Entity.Banana();
                 break;
+            case this.Entities.BEE:
+                result = new MS.Entity.Bee();
+                break;
             case this.Entities.MONKEY:
                 result = new MS.Entity.Monkey();
                 break;
             case this.Entities.VINE:
                 result = new MS.Entity.Vine();
                 break;
+            default:
+                DE.Util.log('GAME: Attempting to create a non-existent entity');
         }
         if (result != null) {
             result.setPos(x || 0, y || 0);

@@ -6,6 +6,19 @@ MS.State.Preload = {
     
     start : function() {
         DE.Util.log('PRELOAD: Starting state');
+        
+        // Parse JSON
+        var that = this;
+        $.ajax({
+            async : false,
+            type : 'GET',
+            url : 'resources/data/scenarios.xml',
+            dataType : 'xml',
+            success : that.addScenarios,
+            error : function() {
+                DE.Util.log('PRELOAD: Error loading scenarios');
+            }
+        });
     },
     
     exit : function() {
@@ -60,5 +73,14 @@ MS.State.Preload = {
         this.count += 1;
         this.percentage = (this.count / this.totalCount * 100).toFixed(0);
         DE.Util.log('PRELOAD: Percentage of images loaded: ' + this.percentage + '%');
+    },
+    
+    addScenarios : function(data) {
+        // Place scenarios in map for later use
+        var M = MS.Game.Map;
+        $(data).find('scenario').each(function() {
+            var id = $(this).attr('id');
+            M.scenarios[parseInt(id)] = this;
+        });
     }
 };

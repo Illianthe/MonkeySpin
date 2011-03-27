@@ -2,7 +2,12 @@ MS.Entity.Vine = function() {
     this.type = MS.Entity.Entities.VINE;
 
     this.draw = function() {
-        MS.Renderer.draw(this, MS.Entity.Entities.VINE);
+        if (this.tangible) {
+            MS.Renderer.draw(this, MS.Entity.Entities.VINE);
+        }
+        else {
+            MS.Renderer.clear(this, MS.Entity.Entities.VINE);
+        }
     }
 }
 

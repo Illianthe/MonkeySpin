@@ -2,6 +2,7 @@ var MS = {
     loops : 0,
     tick : 0,
     nextTick : null,
+    time : null,
     
     init : function() {
         MS.Renderer.init();
@@ -24,11 +25,13 @@ var MS = {
         this.nextTick = (new Date).getTime();
         
         // If there is a slowdown, update tries to catch up
-        while ((new Date).getTime() >= this.nextTick && this.loops < MS.Config.MAXFRAMESKIP) {
+        do {
+            this.time = (new Date).getTime();
             DE.StateManager.update();
             this.nextTick += this.tick;
             this.loops += 1;
         }
+        while (this.time >= this.nextTick && this.loops < MS.Config.MAXFRAMESKIP);
         
         // Draw only when there is an update
         if (this.loops) {
