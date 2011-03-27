@@ -10,9 +10,9 @@ MS.Game = {
         MS.Game.Player.character.img = MS.Assets.Images.MONKEY;
         for (var i = 0; i < MS.Config.Map.YTILECOUNT; i += 1) {
             var M = MS.Game.Map;
-            var a = MS.Entity.createAtTile('Vine', 1, i, 18, 0, 10, 40);
-            var b = MS.Entity.createAtTile('Vine', 3, i, 18, 0, 10, 40);
-            var c = MS.Entity.createAtTile('Vine', 5, i, 18, 0, 10, 40);
+            var a = MS.Entity.createAtTile('Vine', 1, i, 18, 0, 5, 40);
+            var b = MS.Entity.createAtTile('Vine', 3, i, 18, 0, 5, 40);
+            var c = MS.Entity.createAtTile('Vine', 5, i, 18, 0, 5, 40);
             M.addObject(a, M.staticMap, 1, i);
             M.addObject(b, M.staticMap, 3, i);
             M.addObject(c, M.staticMap, 5, i);

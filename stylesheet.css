@@ -24,7 +24,7 @@ canvas {
     width: 320px;
     height: 1470px;
     z-index: 50;
-    background: url('media/images/bgclouds.png');
+    background: url('resources/images/bgclouds.png');
 }
 
 #bg_0_2 {
@@ -38,7 +38,7 @@ canvas {
     width: 320px;
     height: 1470px;
     z-index: 100;
-    background: url('media/images/bgtrees.png');
+    background: url('resources/images/bgtrees.png');
 }
 
 #bg_1_2 {

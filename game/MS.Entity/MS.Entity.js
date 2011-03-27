@@ -24,7 +24,6 @@ MS.Entity = {
                 result = new MS.Entity.Vine();
                 break;
         }
-        console.log(result);
         if (result != null) {
             result.setPos(x || 0, y || 0);
             result.setDimensions(width || 0, height || 0);

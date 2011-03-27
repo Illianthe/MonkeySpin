@@ -37,7 +37,7 @@ MS.Entity.Monkey = function() {
         // Process actions if they're still occurring
         var time = new Date().getTime();
         // Simulate spinning for half a second (animation)
-        if (this.spinning && time - this.spinDelay > 500) {
+        if (this.spinning && time - this.spinDelay > 0) {
             this.spin();
         }
         
