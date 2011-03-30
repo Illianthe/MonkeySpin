@@ -3,6 +3,7 @@ MS.Entity.Monkey = function() {
     this.oldXPos = 0; // Last position of monkey
     this.oldYPos = 0;
     this.startTime = new Date().getTime(); // Game start time (to adjust speed)
+    this.curTime = null,
     this.velocity = 3;  // Falling speed
     this.totalMovement = 0;  // Distance moved in total
     this.orientation = 'right';  // Orientation on the vines
@@ -38,6 +39,8 @@ MS.Entity.Monkey = function() {
                     break;
             }
         }
+        
+        this.curTime = new Date().getTime();
         
         // Adjust speed if enough time has elapsed
         if (this.curTime - this.startTime > 60000) {
