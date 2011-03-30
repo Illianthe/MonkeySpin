@@ -11,7 +11,5 @@ MS.State.Main = {
     },
     
     update : function() {
-        DE.StateManager.pop();
-        DE.StateManager.push(MS.State.Game);
     }
 };
