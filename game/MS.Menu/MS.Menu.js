@@ -125,7 +125,7 @@ MS.Menu = {
 		var selectedMenuItem = MS.Menu.menuItems[MS.Menu.cursorPositionIndex];
 		switch(selectedMenuItem){
 			case "PLAY":
-				/** START GAME **/			
+				MS.State.newGame();		
 				break;
 				
 			case "SCORES":

@@ -1,6 +1,7 @@
 MS.State.Main = {
     start : function() {
         DE.Util.log('MAIN : Starting state');
+        MS.Menu.showMenu();
     },
     
     exit : function() {

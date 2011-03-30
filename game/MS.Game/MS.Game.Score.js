@@ -4,7 +4,7 @@ MS.Game.Score = {
     Event : {
         SLIDE : 0,
         COLLECTBANANA : 1
-    }	
+    },
 
     start : function() {
         this.score = 0;

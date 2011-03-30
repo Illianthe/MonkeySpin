@@ -32,7 +32,7 @@ DE.StateManager = {
      */
     popAll : function() {
         while (this.states.length > 0) {
-            pop();
+            this.pop();
         }
     },
     
