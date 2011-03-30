@@ -5,15 +5,17 @@ MS.Entity.Banana = function() {
     this.height = 40;
     this.dirty = false;
     this.pop = false;
+    this.popDelay = 0;
 
     this.draw = function() {
         if (this.tangible) {
             MS.Renderer.draw(this, MS.Entity.Entities.BANANA);
-            if (this.pop) {
+            if (this.pop && this.popDelay == 0) {
                 this.showBanana();
                 this.tangible = false;
                 this.dirty = true;
             }
+            this.popDelay = (this.popDelay == 0) ? 0 : this.popDelay - 1;
         }
         else {
             if (this.dirty) {
@@ -23,12 +25,15 @@ MS.Entity.Banana = function() {
     },
     
     this.collide = function() {
-        MS.Game.Score.increment(MS.Game.Score.Event.COLLECTBANANA);
-        this.showPop();
+        if (!this.pop) {
+            MS.Game.Score.increment(MS.Game.Score.Event.COLLECTBANANA);
+            this.showPop();
+        }
     },
     
     this.showPop = function() {
         this.pop = true;
+        this.popDelay = 5;
         this.img = MS.Assets.Images.BANANAPOP;
         this.width = MS.Assets.Images.BANANAPOP.width;
         this.height = MS.Assets.Images.BANANAPOP.height;
