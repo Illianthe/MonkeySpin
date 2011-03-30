@@ -3,18 +3,15 @@ MS.Entity.Monkey = function() {
     this.oldXPos = 0; // Last position of monkey
     this.oldYPos = 0;
     this.startTime = new Date().getTime(); // Game start time (to adjust speed)
-    this.curTime = 0;
     this.velocity = 3;  // Falling speed
     this.totalMovement = 0;  // Distance moved in total
     this.orientation = 'right';  // Orientation on the vines
     this.vine = 'middle';  // Attached to current vine
     this.hanging = true;  // Connected to a vine?
     this.spinning = false;  // Currently spinning?
-    this.spinDelay = null;
+    this.spinDelay = 0;
     this.jumping = false;  // Currently jumping?
-    this.jumpDelay = null;
-    this.climbing = false;
-    this.climbDelay = null;
+    this.jumpDelay = 0;
     
     this.type = MS.Entity.Entities.MONKEY;
 
@@ -24,22 +21,23 @@ MS.Entity.Monkey = function() {
         var action = P.processAction();
         if (action != null || !this.spinning || !this.jumping || !this.climbing) {
             switch (action) {
-                case P.Actions.CLIMB:
-                    this.climb();
-                    break;
                 case P.Actions.JUMP:
                     this.jumping = true;
-                    this.jumpDelay = new Date().getTime();
+                    this.jumpDelay = 0;
+                    this.jump();
                     break;
-                case P.Actions.SPIN:
+                case P.Actions.SPINLEFT:
                     this.spinning = true;
-                    this.spinDelay = new Date().getTime();
+                    this.spinDelay = 0;
+                    this.spin('left');
+                    break;
+                case P.Actions.SPINRIGHT:
+                    this.spinning = true;
+                    this.spinDelay = 0;
+                    this.spin('right');
                     break;
             }
         }
-        
-        // Process actions if they're still occurring
-        this.curTime = new Date().getTime();
         
         // Adjust speed if enough time has elapsed
         if (this.curTime - this.startTime > 60000) {
@@ -53,16 +51,6 @@ MS.Entity.Monkey = function() {
         }
         else if (this.curTime - this.startTime > 15000) {
             this.velocity = 4;
-        }
-        
-        // Spin
-        if (this.spinning && this.curTime - this.spinDelay > 0) {
-            this.spin();
-        }
-        
-        // Jump
-        if (this.jumping && this.curTime - this.jumpDelay > 0) {
-            this.jump();
         }
         
         // Check for collisions
@@ -88,7 +76,12 @@ MS.Entity.Monkey = function() {
         this.dirty = false;
     }
     
-    this.spin = function() {
+    this.spin = function(direction) {
+        // Do nothing - same direction
+        if (this.orientation == direction) {
+            return;
+        }
+        
         this.oldXPos = this.xPos;
         if (this.orientation == 'left') {
             this.orientation = 'right';

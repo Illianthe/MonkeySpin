@@ -33,7 +33,7 @@ MS.Entity.Banana = function() {
     
     this.showPop = function() {
         this.pop = true;
-        this.popDelay = 5;
+        this.popDelay = 10;
         this.img = MS.Assets.Images.BANANAPOP;
         this.width = MS.Assets.Images.BANANAPOP.width;
         this.height = MS.Assets.Images.BANANAPOP.height;

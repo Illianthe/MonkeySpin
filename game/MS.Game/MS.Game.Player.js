@@ -7,7 +7,8 @@ MS.Game.Player = {
      */
     Actions : {
         JUMP : 'jump',
-        SPIN : 'spin',
+        SPINLEFT : 'spinleft',
+        SPINRIGHT :'spinright',
         CLIMB : 'climb'
     },
     
