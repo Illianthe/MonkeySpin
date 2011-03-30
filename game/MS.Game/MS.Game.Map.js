@@ -62,14 +62,6 @@ MS.Game.Map = {
             this.addLastRow(this.buffer);
             this.range -= MS.Config.Map.TILESIZE;
         }
-        for (var i = 0; i < MS.Config.Map.XTILECOUNT; i += 1) {
-            for (var j = 0; j < MS.Config.Map.YTILECOUNT; j += 1) {
-                var length = this.staticMap[i][j].length;
-                for (var k = 0; k < length; k += 1) {
-                    this.staticMap[i][j][k].update();
-                }
-            }
-        }
     },
     
     /**

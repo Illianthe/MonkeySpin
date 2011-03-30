@@ -4,24 +4,16 @@ MS.Entity.Banana = function() {
     this.width = 21;
     this.height = 40;
     this.dirty = false;
-    this.curTime = null;
     this.pop = false;
-    this.popDelay = null;
-    
-    this.update = function() {
-        this.curTime = new Date().getTime();
-        
-        // Show pop animation before erasing
-        if (this.pop && this.curTime - this.popDelay >= 10) {
-            this.showBanana();
-            this.tangible = false;
-            this.dirty = true;
-        }
-    }
 
     this.draw = function() {
         if (this.tangible) {
             MS.Renderer.draw(this, MS.Entity.Entities.BANANA);
+            if (this.pop) {
+                this.showBanana();
+                this.tangible = false;
+                this.dirty = true;
+            }
         }
         else {
             if (this.dirty) {
@@ -36,7 +28,6 @@ MS.Entity.Banana = function() {
     
     this.showPop = function() {
         this.pop = true;
-        this.popDelay = new Date().getTime();
         this.img = MS.Assets.Images.BANANAPOP;
         this.width = MS.Assets.Images.BANANAPOP.width;
         this.height = MS.Assets.Images.BANANAPOP.height;
