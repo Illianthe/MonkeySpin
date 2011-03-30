@@ -1,8 +1,8 @@
 MS.Entity.Base = function() {
-    this.xPos = null;
-    this.yPos = null;
-    this.width = null;
-    this.height = null;
+    this.xPos = 0;
+    this.yPos = 0;
+    this.width = 0;
+    this.height = 0;
     this.tangible = false;
     this.id = null;
     this.img = null;

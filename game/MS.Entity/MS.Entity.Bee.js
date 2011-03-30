@@ -5,6 +5,10 @@ MS.Entity.Bee = function() {
         if (this.tangible) {
             MS.Renderer.draw(this, MS.Entity.Entities.BEE);
         }
+    },
+    
+    this.collide = function() {
+        MS.Game.Player.character.die();
     }
 }
 

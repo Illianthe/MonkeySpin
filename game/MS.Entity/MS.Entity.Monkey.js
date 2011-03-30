@@ -43,25 +43,26 @@ MS.Entity.Monkey = function() {
         
         // Adjust speed if enough time has elapsed
         if (this.curTime - this.startTime > 60000) {
-            DE.Util.log('GAME: Changed velocity after 60 seconds')
-            this.velocity = 9;
-        }
-        else if (this.curTime - this.startTime > 45000) {
-            DE.Util.log('GAME: Changed velocity after 45 seconds')
             this.velocity = 7;
         }
+        else if (this.curTime - this.startTime > 45000) {
+            this.velocity = 6;
+        }
         else if (this.curTime - this.startTime > 30000) {
-            DE.Util.log('GAME: Changed velocity after 30 seconds')
             this.velocity = 5;
         }
         else if (this.curTime - this.startTime > 15000) {
-            DE.Util.log('GAME: Changed velocity after 15 seconds')
             this.velocity = 4;
         }
         
-        // Simulate spinning for half a second (animation)
+        // Spin
         if (this.spinning && this.curTime - this.spinDelay > 0) {
             this.spin();
+        }
+        
+        // Jump
+        if (this.jumping && this.curTime - this.jumpDelay > 0) {
+            this.jump();
         }
         
         // Check for collisions
@@ -101,7 +102,19 @@ MS.Entity.Monkey = function() {
     }
     
     this.jump = function() {
+        this.oldXPos = this.xPos;
+        if (this.orientation == 'right' && this.vine != 'right') {
+            this.xPos += 40;
+            this.orientation = 'left';
+            this.vine = (this.vine == 'left') ? 'middle' : 'right';
+        }
+        else if (this.orientation == 'left' && this.vine != 'left') {
+            this.xPos -= 40;
+            this.orientation = 'right';
+            this.vine = (this.vine == 'right') ? 'middle' : 'left';
+        }
         this.jumping = false;
+        this.dirty = true;
     }
     
     this.climb = function() {
@@ -145,6 +158,10 @@ MS.Entity.Monkey = function() {
                 this.hanging = true;
                 break;
             case E.BANANA:
+                obj.collide();
+                break;
+            case E.BEE:
+                obj.collide();
                 break;
         }
     }

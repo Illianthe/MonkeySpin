@@ -14,15 +14,8 @@ MS.Game.Input = {
     
     parseKeypress : function(event) {
         switch (event.which) {
-            case 37:    // Left Arrow
-            case 65:    // A
-            case 39:    // Right Arrow
-            case 68:    // D
+            case 16:   // Left Shift
                 MS.Game.Player.setAction(MS.Game.Player.Actions.SPIN);
-                break;
-            case 38:    // Up Arrow
-            case 87:    // W
-                MS.Game.Player.setAction(MS.Game.Player.Actions.CLIMB);
                 break;
             case 32:    // Space
                 MS.Game.Player.setAction(MS.Game.Player.Actions.JUMP);

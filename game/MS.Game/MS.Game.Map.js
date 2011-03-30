@@ -32,9 +32,9 @@ MS.Game.Map = {
             for (var j = 0; j < MS.Config.Map.YTILECOUNT; j += 1) {
                 // Even columns
                 if (i % 2 == 0) {
-                    var banana = MS.Entity.createAtTile(MS.Entity.Entities.BANANA, i, j);
+                    var banana = MS.Entity.createAtTile(MS.Entity.Entities.BANANA, i, j, 10, 0);
                     this.addObject(banana, this.staticMap, i, j);
-                    var bee = MS.Entity.createAtTile(MS.Entity.Entities.BEE, i, j);
+                    var bee = MS.Entity.createAtTile(MS.Entity.Entities.BEE, i, j, 0, 0, 25, 25);
                     this.addObject(bee, this.staticMap, i, j);
                 }
                 else {
@@ -61,6 +61,14 @@ MS.Game.Map = {
             this.modifyBuffer();
             this.addLastRow(this.buffer);
             this.range -= MS.Config.Map.TILESIZE;
+        }
+        for (var i = 0; i < MS.Config.Map.XTILECOUNT; i += 1) {
+            for (var j = 0; j < MS.Config.Map.YTILECOUNT; j += 1) {
+                var length = this.staticMap[i][j].length;
+                for (var k = 0; k < length; k += 1) {
+                    this.staticMap[i][j][k].update();
+                }
+            }
         }
     },
     
@@ -96,9 +104,9 @@ MS.Game.Map = {
     findNeighbours : function(obj, xOffset, yOffset) {
         var result = {};
         result.startX = Math.floor((obj.xPos - (xOffset || 0)) / MS.Config.Map.TILESIZE);
-        result.startY = Math.floor((obj.yPos - (yOffset || 0)) / MS.Config.Map.TILESIZE);
+        result.startY = Math.floor((obj.yPos - (yOffset || 0)) / MS.Config.Map.TILESIZE) + 1;
         result.endX = Math.floor((obj.xPos + obj.width - (xOffset || 0)) / MS.Config.Map.TILESIZE);
-        result.endY = Math.floor((obj.yPos + obj.height - (yOffset || 0)) / MS.Config.Map.TILESIZE);
+        result.endY = Math.floor((obj.yPos + obj.height - (yOffset || 0)) / MS.Config.Map.TILESIZE) + 1;
         return result;
     },
     

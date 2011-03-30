@@ -32,7 +32,7 @@ MS.Entity = {
         }
         if (result != null) {
             result.setPos(x || 0, y || 0);
-            result.setDimensions(width || 0, height || 0);
+            result.setDimensions(width || result.width, height || result.height);
             result.id = this._id;
             this._id += 1;
         }

@@ -33,8 +33,27 @@ MS.Renderer = {
     draw : function(obj, type) {
         switch (type) {
             case MS.Entity.Entities.BANANA:
+                this.staticContext.clearRect(
+                    obj.xPos,
+                    obj.yPos - MS.Game.Player.character.yPos + MS.Game.Player.character.velocity,
+                    MS.Config.Map.TILESIZE,
+                    MS.Config.Map.TILESIZE
+                );
+                this.staticContext.drawImage(
+                    obj.img,
+                    obj.xPos,
+                    obj.yPos - MS.Game.Player.character.yPos
+                );
                 break;
             case MS.Entity.Entities.BEE:
+                this.staticContext.clearRect(
+                    obj.xPos,
+                    obj.yPos - MS.Game.Player.character.yPos + MS.Game.Player.character.velocity,
+                    obj.width,
+                    obj.height
+                );
+                this.staticContext.fillStyle = '#ff6600';
+                this.staticContext.fillRect(obj.xPos, obj.yPos - MS.Game.Player.character.yPos, 25, 25);
                 break;
             case MS.Entity.Entities.MONKEY:
                 // Clear previous instance and redraw
@@ -58,6 +77,7 @@ MS.Renderer = {
     clear : function(obj, type) {
         switch (type) {
             case MS.Entity.Entities.BANANA:
+                this.staticContext.clearRect(obj.xPos, obj.yPos - MS.Game.Player.character.yPos, MS.Config.Map.TILESIZE, MS.Config.Map.TILESIZE);
                 break;
             case MS.Entity.Entities.BEE:
                 break;
