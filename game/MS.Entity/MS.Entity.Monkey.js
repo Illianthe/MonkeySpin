@@ -78,6 +78,7 @@ MS.Entity.Monkey = function() {
         this.oldYPos = this.yPos;
         this.yPos += this.velocity;
         this.totalMovement += this.velocity;
+        MS.Game.Score.increment(MS.Game.Score.Event.SLIDE, this.velocity);
     }
     
     this.draw = function() {

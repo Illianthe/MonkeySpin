@@ -23,6 +23,7 @@ MS.Entity.Banana = function() {
     },
     
     this.collide = function() {
+        MS.Game.Score.increment(MS.Game.Score.Event.COLLECTBANANA);
         this.showPop();
     },
     
