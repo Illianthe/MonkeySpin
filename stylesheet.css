@@ -1,3 +1,20 @@
+@-webkit-keyframes floatingCursor{
+	0%{
+		top: -4px;
+		left: -1px;		
+	}	
+	
+	50%{
+		top: 2px;
+		left: 2px;
+	}
+	
+	100%{
+		top: -5px;
+		left: -1px;				
+	}
+}
+
 body, .ui-content {
     background-color: #000;
 }
@@ -10,6 +27,19 @@ body, .ui-content {
     overflow: hidden;
     background-color: #ffe2b2;
 }
+
+#comingSoon{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1100;
+	background-color: black;
+	width: 100%;
+	height: 100%;
+	background: url('resources/images/future.png');	
+	display: none;	
+}
+
 
 #videoPlayer{
 	position: absolute;
@@ -51,6 +81,16 @@ body, .ui-content {
 	position: relative;
 	left: 3px;
 	top: 3px;
+}
+
+#cursor{
+	position: relative;	
+	-webkit-animation-name: floatingCursor;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-duration: 1s;	
+	top: -5px;
+	left: -5px;
 }
 
 canvas {

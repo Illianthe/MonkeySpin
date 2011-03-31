@@ -6,7 +6,7 @@ MS.Menu = {
 	menuItems : new Array("PLAY", "SCORES", "HELP", "OPTIONS"),
 	
 	/** Cursor positions in pixles relative to "#menu" DIV box **/
-	itemsCursorX : new Array(10,7,78,55),
+	itemsCursorX : new Array(10,3,78,55),
 	itemsCursorY : new Array(6,36,88,110),
 	
 	/** Menu index at which the Cursor is positioned **/
@@ -147,10 +147,11 @@ MS.Menu = {
 				
 			case "SCORES":
 				/** SHOW HIGH SCORES **/
+				MS.Future.showScreen( MS.Menu.showMenu );
 				break;
 				
 			case "OPTIONS":
-				/** SHOW OPTIONS **/
+				MS.Future.showScreen( MS.Menu.showMenu );
 				break;
 				
 			case "HELP":
@@ -160,6 +161,7 @@ MS.Menu = {
 				break;
 				
 			default:
+				MS.Future.showScreen( MS.Menu.showMenu );
 				break;	
 		}		
 		MS.Menu.hideMenu();

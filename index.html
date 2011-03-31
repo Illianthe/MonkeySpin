@@ -47,18 +47,20 @@
     <script type="text/javascript" src="game/MS.State/MS.State.Preload.js"></script>
     <script type="text/javascript" src="game/MS.Screens/MS.Menu.js"></script>
     <script type="text/javascript" src="game/MS.Screens/MS.Video.js"></script>
-    
+	<script type="text/javascript" src="game/MS.Screens/MS.Future.js"></script>
     <!-- Complete minified script -->
 </head>
 
 <body>
     <div id="container">
+            	
         <div id="menuScreen">
             <div id="menu">
-                <div id="menuCursor"><img src="resources/images/menuCursor.png"></div>
-            </div>
+            			<div id="menuCursor"><img id="cursor" src="resources/images/menuCursor.png"></div>
+		    		</div>
         </div>
         
+				<div id="comingSoon"></div>
         <div id="gameScreen">
             <canvas id="staticCanvas"></canvas>
             <canvas id="monkeyCanvas"></canvas>
