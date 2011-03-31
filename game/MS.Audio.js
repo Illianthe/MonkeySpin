@@ -18,7 +18,7 @@ MS.Audio = {
         
         // Add audio elements
         this.menuBg = new Audio('resources/music/menubg.mp3');
-        this.gameBg = new Audio('resources/music/gamebg.wav');
+        this.gameBg = new Audio('resources/music/gamebg.mp3');
         
         // Make tracks loop
         this.setLooping(this.menuBg);
@@ -36,9 +36,10 @@ MS.Audio = {
     preload : function(elt) {
         var that = this;
         elt.addEventListener(
-            'loadeddata',
+            'canplaythrough',
             function() {
                 that.loadedTracks += 1;
+                DE.Util.log('AUDIO: Preloaded track');
             },
             false
         );

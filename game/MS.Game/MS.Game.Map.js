@@ -37,9 +37,26 @@ MS.Game.Map = {
                     var bee = MS.Entity.createAtTile(MS.Entity.Entities.BEE, i, j, 0, 0, 25, 25);
                     this.addObject(bee, this.staticMap, i, j);
                 }
+                // Odd columns
                 else {
-                    var vine =  MS.Entity.createAtTile(MS.Entity.Entities.VINE, i, j, 18, 0, 5, 40);
+                    var vine =  MS.Entity.createAtTile(MS.Entity.Entities.VINE, i, j, 11, 0, 7, 40);
                     this.addObject(vine, this.staticMap, i, j);
+                    var branch = MS.Entity.createAtTile(MS.Entity.Entities.BRANCH, i, j);
+                    // Position specific branches
+                    switch (i) {
+                        case 1:
+                            branch.xPos -= 61;
+                            branch.img = MS.Assets.Images.BRANCHLEFT;
+                            break;
+                        case 3:
+                            branch.img = MS.Assets.Images.BRANCHMIDDLE;
+                            break;
+                        case 5:
+                            branch.xPos += 4;
+                            branch.img = MS.Assets.Images.BRANCHRIGHT;
+                            break;
+                    }
+                    this.addObject(branch, this.staticMap, i, j);
                 }
             }
         }
@@ -49,7 +66,7 @@ MS.Game.Map = {
             var row = $(this.getRowFromScenario()).text();
             for (var i = 0; i < MS.Config.Map.XTILECOUNT; i += 1) {
                 var obj = row[i];
-                this.processEntity(obj, this.staticMap[i][j]);
+                this.processEntity(obj, this.staticMap[i][j], i);
             }
             this.lastRow += 1;
         }
@@ -129,7 +146,7 @@ MS.Game.Map = {
         for (var i = 0; i < this.buffer.length; i += 1) {
             var obj = row[i];
             if (this.buffer[i].length > 0) {
-                this.processEntity(obj, this.buffer[i]);
+                this.processEntity(obj, this.buffer[i], i);
             }
         }
         this.lastRow += 1;
@@ -149,7 +166,7 @@ MS.Game.Map = {
         return result;
     },
     
-    processEntity : function(entity, container) {
+    processEntity : function(entity, container, column) {
         var origEntity;
         switch (entity) {
             // Blank
@@ -167,6 +184,13 @@ MS.Game.Map = {
                 origEntity.tangible = true;
                 break;
             }
+            // Branch
+            case 'R': {
+                origEntity = this.findEntity(container, MS.Entity.Entities.BRANCH);
+                origEntity.yPos = this.lastRow * MS.Config.Map.TILESIZE;
+                origEntity.tangible = true;
+                break;
+            }
             // Banana
             case 'N': {
                 origEntity = this.findEntity(container, MS.Entity.Entities.BANANA);
@@ -179,7 +203,33 @@ MS.Game.Map = {
                 origEntity = this.findEntity(container, MS.Entity.Entities.VINE);
                 origEntity.tangible = true;
                 origEntity.yPos = this.lastRow * MS.Config.Map.TILESIZE;
-                origEntity.img = MS.Assets.Images.VINE2;
+                var rand = DE.Util.rand(1, 8);
+                switch (rand) {
+                    case 1:
+                        origEntity.img = MS.Assets.Images.VINE1;
+                        break;
+                    case 2:
+                        origEntity.img = MS.Assets.Images.VINE2;
+                        break;
+                    case 3:
+                        origEntity.img = MS.Assets.Images.VINE3;
+                        break;
+                    case 4:
+                        origEntity.img = MS.Assets.Images.VINE4;
+                        break;
+                    case 5:
+                        origEntity.img = MS.Assets.Images.VINE5;
+                        break;
+                    case 6:
+                        origEntity.img = MS.Assets.Images.VINE6;
+                        break;
+                    case 7:
+                        origEntity.img = MS.Assets.Images.VINE7;
+                        break;
+                    case 8:
+                        origEntity.img = MS.Assets.Images.VINE8;
+                        break;
+                }
                 break;
             }
         }

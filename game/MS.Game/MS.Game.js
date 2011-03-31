@@ -17,6 +17,7 @@ MS.Game = {
     update : function() {
         MS.Game.Player.update();
         MS.Game.Map.update();
+        MS.Renderer.update();
     },
     
     draw : function() {

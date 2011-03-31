@@ -1,4 +1,6 @@
 MS.Renderer = {
+    dirty : false,
+    
     staticCanvas : null,
     staticContext : null,
     monkeyCanvas : null,
@@ -23,6 +25,12 @@ MS.Renderer = {
         // Center canvas
         this.staticContext.translate(20, 0);
         this.monkeyContext.translate(20, 0);
+        
+        this.dirty = false;
+    },
+    
+    update : function() {
+        this.dirty = true;
     },
     
     /**
@@ -31,14 +39,12 @@ MS.Renderer = {
      * pivots around the monkey's position.
      */
     draw : function(obj, type) {
+        if (this.dirty) {
+            this.staticContext.clearRect(-50, 0, MS.Config.Resolution.WIDTH + 50, MS.Config.Resolution.HEIGHT);
+            this.dirty = false;
+        }
         switch (type) {
             case MS.Entity.Entities.BANANA:
-                this.staticContext.clearRect(
-                    obj.xPos,
-                    obj.yPos - MS.Game.Player.character.yPos + MS.Game.Player.character.velocity,
-                    MS.Config.Map.TILESIZE,
-                    MS.Config.Map.TILESIZE
-                );
                 this.staticContext.drawImage(
                     obj.img,
                     obj.xPos,
@@ -46,12 +52,6 @@ MS.Renderer = {
                 );
                 break;
             case MS.Entity.Entities.BEE:
-                this.staticContext.clearRect(
-                    obj.xPos,
-                    obj.yPos - MS.Game.Player.character.yPos + MS.Game.Player.character.velocity,
-                    obj.width,
-                    obj.height
-                );
                 this.staticContext.fillStyle = '#ff6600';
                 this.staticContext.fillRect(obj.xPos, obj.yPos - MS.Game.Player.character.yPos, 25, 25);
                 break;
@@ -62,6 +62,13 @@ MS.Renderer = {
                     obj.img,
                     obj.xPos,
                     this.cameraYPivot
+                );
+                break;
+            case MS.Entity.Entities.BRANCH:
+                this.staticContext.drawImage(
+                    obj.img,
+                    obj.xPos,
+                    obj.yPos - MS.Game.Player.character.yPos
                 );
                 break;
             case MS.Entity.Entities.VINE:
@@ -77,14 +84,14 @@ MS.Renderer = {
     clear : function(obj, type) {
         switch (type) {
             case MS.Entity.Entities.BANANA:
-                this.staticContext.clearRect(obj.xPos, obj.yPos - MS.Game.Player.character.yPos + MS.Game.Player.character.velocity, MS.Config.Map.TILESIZE, MS.Config.Map.TILESIZE);
                 break;
             case MS.Entity.Entities.BEE:
                 break;
             case MS.Entity.Entities.MONKEY:
                 break;
+            case MS.Entity.Entities.BRANCH:
+                break;
             case MS.Entity.Entities.VINE:
-                this.staticContext.clearRect(obj.xPos, obj.yPos  - MS.Game.Player.character.yPos, obj.width, obj.height);
                 break;
         }
     },

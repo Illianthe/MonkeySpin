@@ -8,7 +8,6 @@ MS.Entity.Bee = function() {
     },
     
     this.collide = function() {
-        MS.Game.Player.character.die();
     }
 }
 

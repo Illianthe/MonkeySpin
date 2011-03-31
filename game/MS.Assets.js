@@ -11,13 +11,17 @@ MS.Assets = {
         VINE1 : 'resources/images/vine1.png',
         VINE2 : 'resources/images/vine2.png',
         VINE3 : 'resources/images/vine3.png',
+        VINE4 : 'resources/images/vine4.png',
+        VINE5 : 'resources/images/vine5.png',
+        VINE6 : 'resources/images/vine6.png',
+        VINE7 : 'resources/images/vine7.png',
+        VINE8 : 'resources/images/vine8.png',
+        VINEEND : 'resources/images/vineEnd.png',
+        BRANCHLEFT : 'resources/images/branchLeft.png',
+        BRANCHMIDDLE : 'resources/images/branchMiddle.png',
+        BRANCHRIGHT : 'resources/images/branchRight.png',
         BANANA : 'resources/images/banana.png',
-        BANANAPOP : 'resources/images/bananapop.png',
-		MENU_HELP : 'resources/images/menu_help.png',
-		MENU_OPTIONS : 'resources/images/menu_options.png',
-		MENU_PLAY : 'resources/images/menu_play.png',
-		MENU_SCORES : 'resources/images/menu_scores.png'
-		
+        BANANAPOP : 'resources/images/bananapop.png'
     },
     // Actual image objects that is used by the game logic
     Images : {}

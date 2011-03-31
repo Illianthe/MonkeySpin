@@ -4,6 +4,7 @@ MS.Entity = {
     Entities : {
         BANANA : 'Banana',
         BEE : 'Bee',
+        BRANCH : 'Branch',
         MONKEY : 'Monkey',
         VINE : 'Vine'
     },
@@ -20,6 +21,9 @@ MS.Entity = {
                 break;
             case this.Entities.BEE:
                 result = new MS.Entity.Bee();
+                break;
+            case this.Entities.BRANCH:
+                result = new MS.Entity.Branch();
                 break;
             case this.Entities.MONKEY:
                 result = new MS.Entity.Monkey();

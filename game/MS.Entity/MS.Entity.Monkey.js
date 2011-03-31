@@ -119,6 +119,7 @@ MS.Entity.Monkey = function() {
     }
     
     this.die = function() {
+        DE.Util.log('GAME: Dying...');
     }
     
     /**

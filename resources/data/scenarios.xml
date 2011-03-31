@@ -4,6 +4,7 @@
  | Symbols:
  |   V = vine
  |   B = bee
+ |   R = branch
  |   N = banana
  |   - = blank space
  |
@@ -19,7 +20,7 @@
 <scenario id="0" cols="7" rows="14">
     <link to="1" />
     <map>
-        <row>-V-V-V-</row>
+        <row>-V-R-R-</row>
         <row>-V-V-V-</row>
         <row>-V-V-V-</row>
         <row>NVBV-V-</row>
@@ -44,11 +45,11 @@
         <row>---V-V-</row>
         <row>---V-V-</row>
         <row>---V-V-</row>
+        <row>-R-V-V-</row>
         <row>-V-V-V-</row>
-        <row>-V-V-V-</row>
         <row>-V-V---</row>
         <row>-V-V---</row>
-        <row>-V-V---</row>
+        <row>-V-----</row>
         <row>-V-----</row>
     </map>
 </scenario>
