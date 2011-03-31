@@ -28,6 +28,8 @@ MS.Menu = {
 		$("#menuCursor").css("left", MS.Menu.itemsCursorX[MS.Menu.cursorPositionIndex]);
 		$("#menu").css("background", "");
 		
+		$("#menuMusic1")[0].play();
+		
 		if (!MS.Menu.keyEventListener_enabled) {
 			DE.InputManager.Keyboard.subscribe(MS.Menu.menuKeyEventListener);
 			MS.Menu.keyEventListener_enabled = true;
@@ -42,6 +44,9 @@ MS.Menu = {
 	 */	
 	hideMenu: function(){		
 		$("#menuScreen").css("display", "none");
+		
+		$("#menuMusic1")[0].pause();
+		$("#menuMusic2")[0].pause();
 		
 		if (MS.Menu.keyEventListener_enabled) {
 			DE.InputManager.Keyboard.unsubscribe(MS.Menu.menuKeyEventListener);
