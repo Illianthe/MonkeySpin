@@ -40,7 +40,8 @@
 
 <scenario id="1" cols="7" rows="15">
     <link to="0" />
-    <link to="0" />
+    <link to="2" />
+    <link to="3" />
     <map>
         <row>---V-V-</row>
         <row>---V-V-</row>
@@ -57,6 +58,48 @@
         <row>-V-----</row>
         <row>-V-----</row>
         <row>-V-----</row>
+    </map>
+</scenario>
+
+<scenario id="2" cols="7" rows="15">
+    <link to="1" />
+    <map>
+        <row>-V---R-</row>
+        <row>-V---V-</row>
+        <row>-V-R-V-</row>
+        <row>-V-V-V-</row>
+        <row>-V-V-V-</row>
+        <row>-V-V-E-</row>
+        <row>-E-V---</row>
+        <row>---V---</row>
+        <row>---V-R-</row>
+        <row>---V-V-</row>
+        <row>---V-V-</row>
+        <row>---E-V-</row>
+        <row>-----V-</row>
+        <row>-----V-</row>
+        <row>---R-V-</row>
+    </map>
+</scenario>
+
+<scenario id="3" cols="7" rows="15">
+    <link to="1" />
+    <map>
+        <row>-V-R---</row>
+        <row>-V-V---</row>
+        <row>-V-V---</row>
+        <row>-E-V---</row>
+        <row>---V---</row>
+        <row>---V---</row>
+        <row>-R-V-R-</row>
+        <row>-V-V-V-</row>
+        <row>-V-V-V-</row>
+        <row>-V-V-V-</row>
+        <row>-V-V-V-</row>
+        <row>-V-E-V-</row>
+        <row>-E---V-</row>
+        <row>-----V-</row>
+        <row>---R-V-</row>
     </map>
 </scenario>
 </scenarios>
