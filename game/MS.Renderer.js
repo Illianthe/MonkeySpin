@@ -77,7 +77,7 @@ MS.Renderer = {
     clear : function(obj, type) {
         switch (type) {
             case MS.Entity.Entities.BANANA:
-                this.staticContext.clearRect(obj.xPos, obj.yPos - MS.Game.Player.character.yPos, MS.Config.Map.TILESIZE, MS.Config.Map.TILESIZE);
+                this.staticContext.clearRect(obj.xPos, obj.yPos - MS.Game.Player.character.yPos + MS.Game.Player.character.velocity, MS.Config.Map.TILESIZE, MS.Config.Map.TILESIZE);
                 break;
             case MS.Entity.Entities.BEE:
                 break;
