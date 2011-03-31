@@ -7,13 +7,13 @@ MS.Video = {
 	keyEventListener_enabled: false,	/** Keep track of key event listener **/
 	
 	/* VIDEO NAMES */
-	INTRO: null,	
+	HELP: null,	
 	
 	/** Use to define videos to preload. Match following format:
 	 *  	VIDEO_NAME : MS.Video.createVideoElement("file1_path", "file2_path", ...)
 	 */	
 	preloadVideos : function() {
-		MS.Video.INTRO = MS.Video.createVideoElement("resources/videos/sample.theora.ogv");	
+		MS.Video.HELP = MS.Video.createVideoElement("resources/videos/sample.theora.ogv");	
 	},
 		
 	/** Shows specified video on screen. The #videoPlayer DIV is displayed, and the selected video is un-hidden.

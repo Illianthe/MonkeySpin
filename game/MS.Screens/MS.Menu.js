@@ -155,9 +155,7 @@ MS.Menu = {
 				break;
 				
 			case "HELP":
-				MS.Video.showVideo(MS.Video.INTRO, function(){
-					MS.Menu.showMenu();
-				});
+				MS.Video.showVideo(MS.Video.HELP, MS.Menu.showMenu);
 				break;
 				
 			default:

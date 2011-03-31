@@ -1,6 +1,20 @@
 $(document).ready(function() {
     DE.init();
-    MS.init();
+    MS.init();	
+    MS.Video.preloadVideos();
+
+	/*	
+    $('#music').bind('ended', function() {
+        this.currentTime = 0;
+        this.pause();
+        $('#music2')[0].play();
+    });
+    $('#music2').bind('ended', function() {
+        this.currentTime = 0;
+        this.pause();
+        $('#music')[0].play();
+    });
+    */
 });
 
 // Object.create() was introduced in JavaScript 1.8.5, meaning it isn't
