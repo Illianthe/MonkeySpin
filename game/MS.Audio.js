@@ -5,6 +5,9 @@ MS.Audio = {
     menuBg : null,  // Menu background music
     gameBg : null,  // Game background music
     
+    totalTracks : 2,  // Total number of tracks that this obj contains
+    loadedTracks : 0,  // For preloading
+    
     Track : {
         MENUBG : 'menuMusic',
         GAMEBG : 'gameMusic'
@@ -17,8 +20,28 @@ MS.Audio = {
         this.menuBg = new Audio('resources/music/menubg.mp3');
         this.gameBg = new Audio('resources/music/gamebg.wav');
         
+        // Make tracks loop
         this.setLooping(this.menuBg);
         this.setLooping(this.gameBg);
+        
+        // Preload resources
+        this.preload(this.menuBg);
+        this.preload(this.gameBg);
+    },
+    
+    /**
+     * void setLooping(<audio> elt)
+     * Preloads all resources before continuing
+     */
+    preload : function(elt) {
+        var that = this;
+        elt.addEventListener(
+            'loadeddata',
+            function() {
+                that.loadedTracks += 1;
+            },
+            false
+        );
     },
     
     /**

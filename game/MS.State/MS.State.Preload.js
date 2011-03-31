@@ -39,9 +39,7 @@ MS.State.Preload = {
             MS.Assets.Images = DE.Util.preloadImages(MS.Assets.ImageURLs, this.imageLoaded, this);
         }
         
-        if (this.count == this.totalCount && typeof(this.update.subscribed) == 'undefined') {
-            this.update.subscribed = true;
-            
+        if (this.count == this.totalCount && MS.Audio.loadedTracks == MS.Audio.totalTracks) {
             // Minor change for when there are no assets to be loaded
             this.percentage = this.percentage || 100; 
             
