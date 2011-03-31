@@ -48,7 +48,8 @@
     <script type="text/javascript" src="game/MS.State/MS.State.Preload.js"></script>
     <script type="text/javascript" src="game/MS.Screens/MS.Menu.js"></script>
     <script type="text/javascript" src="game/MS.Screens/MS.Video.js"></script>
-	<script type="text/javascript" src="game/MS.Screens/MS.Future.js"></script>
+    <script type="text/javascript" src="game/MS.Screens/MS.Loading.js"></script>
+    <script type="text/javascript" src="game/MS.Screens/MS.Future.js"></script>
     <!-- Complete minified script -->
 </head>
 
@@ -63,6 +64,12 @@
         
 		<div id="videoPlayer"></div>
 		<div id="comingSoon"></div>
+                
+        <div id="loadingScreen">
+            <div id="loadingBar">
+                <div id="loadingProgress"></div>
+            </div>
+        </div>
         
         <div id="gameScreen">
             <canvas id="staticCanvas"></canvas>

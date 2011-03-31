@@ -6,6 +6,7 @@ MS.State.Preload = {
     
     start : function() {
         DE.Util.log('PRELOAD: Starting state');
+        MS.Loading.showScreen();
         
         // Parse JSON
         var that = this;
@@ -55,6 +56,7 @@ MS.State.Preload = {
         this.count += 1;
         this.percentage = (this.count / this.totalCount * 100).toFixed(0);
         DE.Util.log('PRELOAD: Percentage of images loaded: ' + this.percentage + '%');
+        MS.Loading.setProgress(this.percentage);
     },
     
     addScenarios : function(data) {
