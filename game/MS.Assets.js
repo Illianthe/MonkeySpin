@@ -12,7 +12,12 @@ MS.Assets = {
         VINE2 : 'resources/images/vine2.png',
         VINE3 : 'resources/images/vine3.png',
         BANANA : 'resources/images/banana.png',
-        BANANAPOP : 'resources/images/bananapop.png'
+        BANANAPOP : 'resources/images/bananapop.png',
+		MENU_HELP : 'resources/images/menu_help.png',
+		MENU_OPTIONS : 'resources/images/menu_options.png',
+		MENU_PLAY : 'resources/images/menu_play.png',
+		MENU_SCORES : 'resources/images/menu_scores.png'
+		
     },
     // Actual image objects that is used by the game logic
     Images : {}

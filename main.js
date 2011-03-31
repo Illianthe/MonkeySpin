@@ -1,7 +1,8 @@
 $(document).ready(function() {
     DE.init();
-    MS.init();
-    
+    MS.init();	
+    MS.Video.preloadVideos();
+	
     $('#music').bind('ended', function() {
         this.currentTime = 0;
         this.pause();
