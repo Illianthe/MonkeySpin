@@ -9,6 +9,14 @@ MS.Assets = {
         BGTREES : 'resources/images/bgtrees.png',
         BGCLOUDS : 'resources/images/bgclouds.png',
         
+        // Intro video
+        INTROBG : 'resources/images/intro/bg.png',
+        INTROBADLIGHTBACKLIGHT2 : 'resources/images/intro/badlightbacklight2.png',
+        INTROBADLIGHT2 : 'resources/images/intro/badlight2.png',
+        INTROMONKEY1 : 'resources/images/intro/monkey3.png',
+        INTROMONKEY2 : 'resources/images/intro/monkey2.png',
+        INTROMONKEY3 : 'resources/images/intro/monkey1.png',
+        
         // Monkey animations
         MONKEYL1 : 'resources/images/leftSurf1.png',
         MONKEYL2 : 'resources/images/leftSurf2.png',
