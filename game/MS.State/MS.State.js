@@ -17,13 +17,13 @@ MS.State = {
      * a "New Game" button is pressed.
      */
     newGame : function() {
-        // Pop off intermediary states (game state should lie on top of the main state)
-        while (_curState != MS.State.Main) {
-            DE.StateManager.pop();
-            _curState = DE.StateManager.getCurState();
-        }
-        
+        DE.StateManager.popAll();
         _curState = DE.StateManager.push(MS.State.Game);
+    },
+    
+    endGame : function() {
+        DE.StateManager.pop();
+        DE.StateManager.push(MS.State.End);
     },
     
     /**

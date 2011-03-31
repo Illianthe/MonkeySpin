@@ -25,7 +25,9 @@ MS.Game.Map = {
         
         this.buffer = new Array();
         this.range = 0;
+        this.lastRow = 0;
         this.curScenario = 0;
+        this.curScenarioRow = 0;
         
         // Create objects on the map for later use
         for (var i = 0; i < MS.Config.Map.XTILECOUNT; i += 1) {

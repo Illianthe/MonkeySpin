@@ -24,8 +24,8 @@ body, .ui-content {
     width: 320px;
     height: 480px;
     overflow: hidden;
-    background-color: #ffe2b2;
     margin: auto;
+    border: 1px solid #fff;
 }
 
 #comingSoon{
@@ -89,57 +89,81 @@ body, .ui-content {
 	left: -5px;
 }
 
-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-}
-
-#bg_0_1, #bg_0_2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 1470px;
-    z-index: 50;
-    background: url('resources/images/bgclouds.png');
-}
-
-#bg_0_2 {
-    top: 1470px;
-}
-
-#bg_1_1, #bg_1_2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 1470px;
-    z-index: 100;
-    background: url('resources/images/bgtrees.png');
-}
-
-#bg_1_2 {
-    top: 1470px;
-}
-
-#staticCanvas {
-    z-index: 150;
-}
-
-#monkeyCanvas {
-    z-index: 200;
-}
-
-#score {
-    position: absolute;
-    bottom: 10px;
-    text-align: center;
-    z-index: 250;
-    color: #ccffff;
+#gameScreen {
+    display: none;
+    height: 100%;
     width: 100%;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: #003366 0 0 5px;
+    background-color: #ffe2b2;
 }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    
+    #bg_0_1, #bg_0_2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 320px;
+        height: 1470px;
+        z-index: 50;
+        background: url('resources/images/bgclouds.png');
+    }
+    
+    #bg_0_2 {
+        top: 1470px;
+    }
+    
+    #bg_1_1, #bg_1_2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 320px;
+        height: 1470px;
+        z-index: 100;
+        background: url('resources/images/bgtrees.png');
+    }
+    
+    #bg_1_2 {
+        top: 1470px;
+    }
+    
+    #staticCanvas {
+        z-index: 150;
+    }
+    
+    #monkeyCanvas {
+        z-index: 200;
+    }
+    
+    #score {
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        z-index: 250;
+        color: #ccffff;
+        width: 100%;
+        font-size: 24px;
+        font-weight: bold;
+        text-shadow: #003366 0 0 5px;
+    }
+
+#endScreen {
+    display: none;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+}
+
+    .gameOverText {
+        margin: 50px 0;
+    }
+    
+    .instructionText {
+        margin: 50px 0;
+        font-size: 16px;
+    }

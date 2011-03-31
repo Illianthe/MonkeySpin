@@ -10,8 +10,6 @@ MS.Game = {
     
     exit : function() {
         MS.Game.Input.exit();
-        
-        MS.Audio.stop(MS.Audio.Track.GAMEBG);
     },
     
     update : function() {
