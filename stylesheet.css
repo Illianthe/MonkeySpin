@@ -19,13 +19,13 @@ body, .ui-content {
     background-color: #000;
 }
 
-
 #container {
     position: relative;
     width: 320px;
     height: 480px;
     overflow: hidden;
     background-color: #ffe2b2;
+    margin: auto;
 }
 
 #comingSoon{
