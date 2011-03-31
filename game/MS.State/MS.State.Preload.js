@@ -3,6 +3,7 @@ MS.State.Preload = {
     totalCount : 0,    // Total number of assets
     percentage : 0,    // Percentage of assets loaded
     test : 0,
+    showIntro : false,
     
     start : function() {
         DE.Util.log('PRELOAD: Starting state');
@@ -40,11 +41,20 @@ MS.State.Preload = {
             MS.Assets.Images = DE.Util.preloadImages(MS.Assets.ImageURLs, this.imageLoaded, this);
         }
         
-        if (this.count == this.totalCount && MS.Audio.loadedTracks == MS.Audio.totalTracks) {
-            // Minor change for when there are no assets to be loaded
-            this.percentage = this.percentage || 100; 
+        if (this.count == this.totalCount && MS.Audio.loadedTracks == MS.Audio.totalTracks && this.update.done == undefined) {
+            this.update.done = true;
             
-            MS.State.showMain();
+            // Minor change for when there are no assets to be loaded
+            this.percentage = this.percentage || 100;
+            
+            // Show intro
+            MS.Intro.showScreen();
+            this.showIntro = true;
+        }
+        
+        // Intro is currently shown
+        if (this.showIntro) {
+            MS.Intro.autoHide(new Date().getTime());
         }
     },
     

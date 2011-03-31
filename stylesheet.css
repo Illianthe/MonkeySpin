@@ -121,6 +121,18 @@ body, .ui-content {
 	left: -5px;
 }
 
+#intro {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+#introFrame {
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
 #gameScreen {
     display: none;
     height: 100%;

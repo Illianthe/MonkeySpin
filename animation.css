@@ -1,0 +1,282 @@
+/***************************************************
+ *  Setting up the canvas and elements inside it ***
+ *  ***********************************************/
+body{
+	margin: 0px;
+}
+
+#canvas{
+	position: absolute;
+	width: 320px;
+	height: 480px;
+	background: black;
+
+	overflow: hidden;
+	/* overflow: hidden; */
+}
+
+#canvasBorder{
+	position: absolute;
+	width: 320px;
+	height: 480px;
+	z-index: 2000;
+	border: 1px solid red;
+	display: none;
+	
+}
+
+#canvas img{
+	clear: none;
+	position: absolute;	
+	-webkit-transform:
+}
+
+/***************************************************
+ * Animation Definitions and Keyframes
+ * --------------------------------------------------
+ * Example:
+ * 
+  @-webkit-keyframes fontbulger {
+        0%, 100% {
+                font-size: 10px;
+        }
+        50% {
+                font-size: 12px;
+        }
+}
+ ****************************************************/
+
+ @-webkit-keyframes bgFade {
+        from {
+			opacity: 0.0;
+			filter:alpha(opacity=00);
+        }
+		
+        to {
+			opacity: 100.0;
+			filter:alpha(opacity=100.0);
+        }
+ }
+
+ @-webkit-keyframes scene1 {
+ 	from {
+ 		left: 10px;
+ 	}
+	
+	to {
+		left: 100px;
+	}
+ }	
+ 
+ @-webkit-keyframes badlightbacklight2 {
+ 	0% {
+ 		-webkit-transform:rotate(20deg);
+ 	}
+	
+	10% {
+		-webkit-transform:rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(-10deg) scale(1.1);
+		
+	}
+ }	
+ 
+ @-webkit-keyframes badlight2 {
+ 	0% {
+
+ 	}
+	
+	10% {		
+		-webkit-transform:rotate(0deg);
+	}
+	15%{
+		opacity: 100.0;
+		filter:alpha(opacity=100.0);		
+	}
+	20%{
+		top: -15;
+	}
+	
+	100% {
+		-webkit-transform: rotate(-10deg) scale(1.1);	
+	}
+ }	 
+
+@-webkit-keyframes monkey2{
+	
+	0%{
+		-webkit-transform: rotate(20deg) scale(1.5);
+	}
+	/*
+	90%{
+		-webkit-transform: rotate(0deg) scale(1);		
+		top: 272;
+		left: 26;
+	}
+	*/
+	100%{
+		-webkit-transform: rotate(0deg) scale(1);
+		top: 280;
+		left: 27;		
+	}
+}
+
+@-webkit-keyframes monkey1{
+	0%{
+
+	}
+	/*
+	90%{
+		-webkit-transform: rotate(-2deg) scale(1);
+		top: 222px;
+		left: 114px;
+		
+	}
+	*/
+	100%{
+		-webkit-transform: rotate(-2deg) scale(1);
+		top: 232px;
+		left: 115px;
+		-webkit-transform: rotate(-2deg) scale(1);
+	}
+
+}
+
+@-webkit-keyframes monkey3{
+	0%{
+		
+	}
+	100%{
+		
+		-webkit-transform: scale(1);
+		top: 150px;
+		left: 150px;	
+	}
+}
+/**************************************************
+ * Layers and how they should animate
+ * -------------------------------------------------
+ * Example:
+ * 
+   
+   #box {
+   		-webkit-transition-property:		all;
+		-webkit-animation-name: 			bounce;
+		-webkit-animation-duration: 		4s;
+		-webkit-animation-iteration-count: 	10;
+		-webkit-animation-direction: 		alternate;
+		-webkit-animation-timing-function: 	ease-out;
+		-webkit-animation-fill-mode: 		forwards;
+		-webkit-animation-delay: 			2s;
+	}
+	
+ *	
+ * Variables:
+ * ---------
+ * duration & delay:	Xs or Xms
+ * iteration-count:		X
+ * ease, ease-out, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) (e.g. cubic-bezier(0.5, 0.2, 0.3, 1.0))
+ 
+	  
+ **************************************************/
+
+#bg{
+	width: 1131px;
+	height: 511px;
+	
+    left: -800px;
+	top: 0px;
+		
+	-webkit-animation-name: 			bgFade;
+	-webkit-animation-duration: 		5s;
+	-webkit-animation-timing-function: 	linear;
+		
+	
+}
+
+#badlightbacklight2 {
+	width: 616px;
+	height: 582px;
+	
+	left: -145px;
+	top: -35px;
+	
+	-webkit-animation-name: 			badlightbacklight2;
+	-webkit-animation-duration: 		60s;
+	-webkit-animation-timing-function: 	ease-out;	
+}
+
+#monkey2 {
+	width: 167px;
+	height: 226px;
+	left: -100px;
+	top: 500px;
+
+	-webkit-animation-name: 			monkey2;
+	-webkit-animation-duration: 		700ms;
+	-webkit-animation-timing-function: 	ease-out;
+	-webkit-animation-fill-mode: 		forwards;
+	-webkit-animation-delay: 			2000ms;	
+}
+
+#monkey1{
+	
+	width: 219px;
+	height: 320px;
+	
+	top: 700px;
+	left: 300px;
+	-webkit-transform: rotate(-10deg) scale(2);		
+
+	-webkit-animation-name: 			monkey1;
+	-webkit-animation-duration: 		600ms;
+	-webkit-animation-timing-function: 	ease-out;
+	-webkit-animation-fill-mode: 		forwards;
+	-webkit-animation-delay: 			2000ms;		
+}
+
+#monkey3{
+
+	width: 306px;
+	height: 351px;
+	
+	top: 150px;
+	left: 350px;
+	-webkit-transform: scale(0.8);
+	
+	-webkit-animation-name: 			monkey3;
+	-webkit-animation-duration: 		600ms;
+	-webkit-animation-timing-function: 	ease-out;
+	-webkit-animation-fill-mode: 		forwards;
+	-webkit-animation-delay: 			2000ms;				
+}
+
+#badlight2{
+	
+	width: 582px;
+	height: 428px;
+	
+	opacity: 0.0;
+	filter:alpha(opacity=00); 		
+	-webkit-transform:rotate(20deg) scale(0.2);
+
+		
+	top: -150px;
+	
+	-webkit-animation-name: 			badlight2;
+	-webkit-animation-duration: 		60s;
+	-webkit-animation-timing-function: 	ease-out;
+	-webkit-animation-delay: 			3ms;	
+}
+
+#scene1{
+	
+	-webkit-animation-name: 			scene1;
+	-webkit-animation-duration: 		10s;
+	-webkit-animation-timing-function: 	linear;
+	-webkit-animation-delay: 			1s;
+	-webkit-animation-fill-mode: 		forwards;
+	-webkit-animation-direction: 		normal;
+
+}
