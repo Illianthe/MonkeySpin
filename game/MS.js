@@ -5,6 +5,7 @@ var MS = {
     time : null,
     
     init : function() {
+        MS.Audio.init();
         MS.Renderer.init();
         
         // Dynamically change resolution of the viewport

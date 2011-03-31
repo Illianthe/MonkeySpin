@@ -4,13 +4,14 @@ MS.Game = {
         MS.Game.Player.start();
         MS.Game.Map.start();
         MS.Game.Score.start();
-        $('#gameMusic1')[0].play();
+        
+        MS.Audio.play(MS.Audio.Track.GAMEBG);
     },
     
     exit : function() {
         MS.Game.Input.exit();
-        $('#gameMusic1')[0].pause();
-        $('#gameMusic2')[0].pause();
+        
+        MS.Audio.stop(MS.Audio.Track.GAMEBG);
     },
     
     update : function() {
