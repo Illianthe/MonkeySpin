@@ -199,6 +199,13 @@ MS.Game.Map = {
                 break;
             }
             // Vine
+            case 'E': {
+                origEntity = this.findEntity(container, MS.Entity.Entities.VINE);
+                origEntity.tangible = true;
+                origEntity.yPos = this.lastRow * MS.Config.Map.TILESIZE;
+                origEntity.img = MS.Assets.Images.VINEEND;
+                break;
+            }
             case 'V': {
                 origEntity = this.findEntity(container, MS.Entity.Entities.VINE);
                 origEntity.tangible = true;

@@ -3,6 +3,7 @@
 <!--
  | Symbols:
  |   V = vine
+ |   E = end vine
  |   B = bee
  |   R = branch
  |   N = banana
@@ -33,7 +34,7 @@
         <row>-V-V-V-</row>
         <row>-V-V-V-</row>
         <row>-V-V-V-</row>
-        <row>-V-V-V-</row>
+        <row>-E-V-V-</row>
     </map>
 </scenario>
 
@@ -46,9 +47,9 @@
         <row>---V-V-</row>
         <row>---V-V-</row>
         <row>-R-V-V-</row>
-        <row>-V-V-V-</row>
+        <row>-V-V-E-</row>
         <row>-V-V---</row>
-        <row>-V-V---</row>
+        <row>-V-E---</row>
         <row>-V-----</row>
         <row>-V-----</row>
     </map>
