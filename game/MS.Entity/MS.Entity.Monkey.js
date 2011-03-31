@@ -1,4 +1,5 @@
 MS.Entity.Monkey = function() {
+    this.img = MS.Assets.Images.MONKEYR1;
     this.dirty = true;  // Redraw?
     this.oldXPos = 0; // Last position of monkey
     this.oldYPos = 0;
@@ -13,6 +14,9 @@ MS.Entity.Monkey = function() {
     this.spinDelay = 0;
     this.jumping = false;  // Currently jumping?
     this.jumpDelay = 0;
+    
+    this.surfFrame = 1;
+    this.surfDelay = 5;
     
     this.type = MS.Entity.Entities.MONKEY;
 
@@ -41,7 +45,6 @@ MS.Entity.Monkey = function() {
         }
         
         this.curTime = new Date().getTime();
-        
         // Adjust speed if enough time has elapsed
         if (this.curTime - this.startTime > 60000) {
             this.velocity = 7;
@@ -69,6 +72,7 @@ MS.Entity.Monkey = function() {
         this.oldYPos = this.yPos;
         this.yPos += this.velocity;
         this.totalMovement += this.velocity;
+        this.surf();
         MS.Game.Score.increment(MS.Game.Score.Event.SLIDE, this.velocity);
     }
     
@@ -88,25 +92,25 @@ MS.Entity.Monkey = function() {
         this.oldXPos = this.xPos;
         if (this.orientation == 'left') {
             this.orientation = 'right';
-            this.xPos += 40;
+            this.xPos += 45;
         }
         else {
             this.orientation = 'left';
-            this.xPos -= 40;
+            this.xPos -= 45;
         }
         this.spinning = false;
-        this.dirty = true;
+        this.surf();
     }
     
     this.jump = function() {
         this.oldXPos = this.xPos;
         if (this.orientation == 'right' && this.vine != 'right') {
-            this.xPos += 40;
+            this.xPos += 35;
             this.orientation = 'left';
             this.vine = (this.vine == 'left') ? 'middle' : 'right';
         }
         else if (this.orientation == 'left' && this.vine != 'left') {
-            this.xPos -= 40;
+            this.xPos -= 35;
             this.orientation = 'right';
             this.vine = (this.vine == 'right') ? 'middle' : 'left';
         }
@@ -114,9 +118,53 @@ MS.Entity.Monkey = function() {
         this.dirty = true;
     }
     
-    this.climb = function() {
-        
-    }
+    this.surf = function() {
+        this.surfDelay -= 1;
+        if (this.surfDelay == 0) {
+            this.surfFrame = this.surfFrame % 7 + 1
+            
+            switch (this.surfFrame) {
+                case 1:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR1 :
+                        MS.Assets.Images.MONKEYL1;
+                    break;
+                case 2:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR2 :
+                        MS.Assets.Images.MONKEYL2;
+                    break;
+                case 3:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR3 :
+                        MS.Assets.Images.MONKEYL3;
+                    break;
+                case 4:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR4 :
+                        MS.Assets.Images.MONKEYL4;
+                    break;
+                case 5:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR5 :
+                        MS.Assets.Images.MONKEYL5;
+                    break;
+                case 6:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR6 :
+                        MS.Assets.Images.MONKEYL6;
+                    break;
+                case 7:
+                    this.img = (this.orientation == 'right') ?
+                        MS.Assets.Images.MONKEYR7 :
+                        MS.Assets.Images.MONKEYL7;
+                    break;
+            }
+            
+            this.surfDelay = 5;
+            this.dirty = true;
+        }
+    },
     
     this.die = function() {
         DE.Util.log('GAME: Dying...');

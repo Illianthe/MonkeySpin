@@ -57,7 +57,8 @@ MS.Renderer = {
                 break;
             case MS.Entity.Entities.MONKEY:
                 // Clear previous instance and redraw
-                this.monkeyContext.clearRect(obj.oldXPos, this.cameraYPivot, obj.width, obj.height);
+                this.monkeyContext.clearRect(obj.xPos, this.cameraYPivot, 200, obj.height);
+                this.monkeyContext.clearRect(obj.oldXPos, this.cameraYPivot, 200, obj.height);
                 this.monkeyContext.drawImage(
                     obj.img,
                     obj.xPos,

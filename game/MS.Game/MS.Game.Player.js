@@ -34,8 +34,7 @@ MS.Game.Player = {
         this.nextAction = null;
         this.character = null;
         
-        MS.Game.Player.character = MS.Entity.create('Monkey', 137, 40, 50, 79);
-        MS.Game.Player.character.img = MS.Assets.Images.MONKEY;
+        MS.Game.Player.character = MS.Entity.create('Monkey', 135, 40, 60, 90);
     },
     
     update : function() {
