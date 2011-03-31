@@ -45,13 +45,13 @@
     <map>
         <row>---V-V-</row>
         <row>---V-V-</row>
-        <row>---V-V-</row>
+        <row>---V-VN</row>
         <row>---V-V-</row>
         <row>-R-V-V-</row>
         <row>-V-V-E-</row>
         <row>-V-V---</row>
         <row>-V-V---</row>
-        <row>-V-V---</row>
+        <row>NV-V---</row>
         <row>-V-V---</row>
         <row>-V-E---</row>
         <row>-V-----</row>
@@ -66,8 +66,8 @@
     <map>
         <row>-V---R-</row>
         <row>-V---V-</row>
-        <row>-V-R-V-</row>
-        <row>-V-V-V-</row>
+        <row>-V-R-VN</row>
+        <row>-V-VNV-</row>
         <row>-V-V-V-</row>
         <row>-V-V-E-</row>
         <row>-E-V---</row>
@@ -89,12 +89,12 @@
         <row>-V-V---</row>
         <row>-V-V---</row>
         <row>-E-V---</row>
-        <row>---V---</row>
+        <row>--NV---</row>
         <row>---V---</row>
         <row>-R-V-R-</row>
         <row>-V-V-V-</row>
-        <row>-V-V-V-</row>
-        <row>-V-V-V-</row>
+        <row>NV-V-V-</row>
+        <row>-V-VNV-</row>
         <row>-V-V-V-</row>
         <row>-V-E-V-</row>
         <row>-E---V-</row>
