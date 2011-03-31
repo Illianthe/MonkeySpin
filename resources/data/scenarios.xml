@@ -38,7 +38,7 @@
     </map>
 </scenario>
 
-<scenario id="1" cols="7" rows="10">
+<scenario id="1" cols="7" rows="15">
     <link to="0" />
     <link to="0" />
     <map>
@@ -49,7 +49,12 @@
         <row>-R-V-V-</row>
         <row>-V-V-E-</row>
         <row>-V-V---</row>
+        <row>-V-V---</row>
+        <row>-V-V---</row>
+        <row>-V-V---</row>
         <row>-V-E---</row>
+        <row>-V-----</row>
+        <row>-V-----</row>
         <row>-V-----</row>
         <row>-V-----</row>
     </map>

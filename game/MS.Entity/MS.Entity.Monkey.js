@@ -1,17 +1,20 @@
 MS.Entity.Monkey = function() {
     this.img = MS.Assets.Images.MONKEYR1;
     this.dirty = true;  // Redraw?
-    this.oldXPos = 0; // Last position of monkey
-    this.oldYPos = 0;
     this.startTime = new Date().getTime(); // Game start time (to adjust speed)
     this.curTime = null,
     this.velocity = 3;  // Falling speed
     this.totalMovement = 0;  // Distance moved in total
+    
     this.orientation = 'right';  // Orientation on the vines
     this.vine = 'middle';  // Attached to current vine
     this.hanging = true;  // Connected to a vine?
+    
     this.spinning = false;  // Currently spinning?
+    this.spinDirection = 'left';
+    this.spinFrame = 1;
     this.spinDelay = 0;
+    
     this.jumping = false;  // Currently jumping?
     this.jumpDelay = 0;
     
@@ -24,7 +27,7 @@ MS.Entity.Monkey = function() {
         // Process input
         var P = MS.Game.Player;
         var action = P.processAction();
-        if (action != null || !this.spinning || !this.jumping || !this.climbing) {
+        if (action != null && !this.spinning && !this.jumping && !this.climbing) {
             switch (action) {
                 case P.Actions.JUMP:
                     this.jumping = true;
@@ -33,13 +36,13 @@ MS.Entity.Monkey = function() {
                     break;
                 case P.Actions.SPINLEFT:
                     this.spinning = true;
+                    this.spinDirection = 'left';
                     this.spinDelay = 0;
-                    this.spin('left');
                     break;
                 case P.Actions.SPINRIGHT:
                     this.spinning = true;
+                    this.spinDirection = 'right';
                     this.spinDelay = 0;
-                    this.spin('right');
                     break;
             }
         }
@@ -47,9 +50,6 @@ MS.Entity.Monkey = function() {
         this.curTime = new Date().getTime();
         // Adjust speed if enough time has elapsed
         if (this.curTime - this.startTime > 60000) {
-            this.velocity = 7;
-        }
-        else if (this.curTime - this.startTime > 45000) {
             this.velocity = 6;
         }
         else if (this.curTime - this.startTime > 30000) {
@@ -69,10 +69,17 @@ MS.Entity.Monkey = function() {
         }
         
         // Move
-        this.oldYPos = this.yPos;
         this.yPos += this.velocity;
         this.totalMovement += this.velocity;
-        this.surf();
+        if (this.spinning) {
+            this.spin();
+        }
+        else if (this.jumping) {
+            this.jump();
+        }
+        else {
+            this.surf();
+        }
         MS.Game.Score.increment(MS.Game.Score.Event.SLIDE, this.velocity);
     }
     
@@ -83,27 +90,90 @@ MS.Entity.Monkey = function() {
         this.dirty = false;
     }
     
-    this.spin = function(direction) {
+    this.spin = function() {
         // Do nothing - same direction
-        if (this.orientation == direction) {
+        if (this.orientation == this.spinDirection) {
+            this.spinning = false;
             return;
         }
         
-        this.oldXPos = this.xPos;
+        // Spin from left
         if (this.orientation == 'left') {
-            this.orientation = 'right';
-            this.xPos += 45;
+            switch (this.spinFrame) {
+                case 1:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR1;
+                    break;
+                case 2:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR2;
+                    break;
+                case 3:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR3;
+                    break;
+                case 4:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR4;
+                    break;
+                case 5:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR5;
+                    break;
+                case 6:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR6;
+                    break;
+                case 7:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR7;
+                    break;
+                case 8:
+                    this.img = MS.Assets.Images.MONKEYSPINLTR8;
+                    this.xPos += 45;
+                    break;
+            }
         }
+        // Spin from right
         else {
-            this.orientation = 'left';
-            this.xPos -= 45;
+            switch (this.spinFrame) {
+                case 1:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL1;
+                    this.xPos -= 45;
+                    break;
+                case 2:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL2;
+                    break;
+                case 3:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL3;
+                    break;
+                case 4:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL4;
+                    break;
+                case 5:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL5;
+                    break;
+                case 6:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL6;
+                    break;
+                case 7:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL7;
+                    break;
+                case 8:
+                    this.img = MS.Assets.Images.MONKEYSPINRTL8;
+                    break;
+            }
         }
-        this.spinning = false;
-        this.surf();
+        
+        // Finished animation
+        if (this.spinFrame == 8) {
+            this.orientation = (this.orientation == 'left') ? 'right' : 'left';
+            this.spinning = false;
+            this.spinFrame = 1;
+            this.surf();
+            return;
+        }
+        
+        // Next animation frame
+        this.spinFrame = this.spinFrame % 8 + 1;
+        
+        this.dirty = true;
     }
     
     this.jump = function() {
-        this.oldXPos = this.xPos;
         if (this.orientation == 'right' && this.vine != 'right') {
             this.xPos += 35;
             this.orientation = 'left';
