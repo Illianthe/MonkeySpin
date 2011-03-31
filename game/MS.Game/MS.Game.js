@@ -3,6 +3,7 @@ MS.Game = {
         MS.Game.Input.start();
         MS.Game.Player.start();
         MS.Game.Map.start();
+        MS.Game.Score.start();
         // $('#music')[0].play();
     },
     

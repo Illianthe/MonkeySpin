@@ -79,3 +79,15 @@ canvas {
 #monkeyCanvas {
     z-index: 200;
 }
+
+#score {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    z-index: 250;
+    color: #ccffff;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: #003366 0 0 5px;
+}

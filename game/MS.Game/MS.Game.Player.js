@@ -17,7 +17,6 @@ MS.Game.Player = {
      * Set next action to be processed
      */
     setAction : function(action) {
-        DE.Util.log('GAME: Queued ' + action + ' action');
         this.nextAction = action;
     },
     

@@ -1,5 +1,6 @@
 MS.Game.Score = {
     score : 0,
+    scoreId : null,
 
     Event : {
         SLIDE : 0,
@@ -8,6 +9,7 @@ MS.Game.Score = {
 
     start : function() {
         this.score = 0;
+        this.scoreId = document.getElementById('score');
     },
 
     /**
@@ -22,8 +24,9 @@ MS.Game.Score = {
 		this.score += arg1;
                 break;
             case this.Event.COLLECTBANANA:
-                this.score += 5;
+                this.score += 100;
                 break;
         }
+        this.scoreId.innerHTML = this.score;
     }
 }

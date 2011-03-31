@@ -44,7 +44,7 @@
     <script type="text/javascript" src="game/MS.State/MS.State.Main.js"></script>
     <script type="text/javascript" src="game/MS.State/MS.State.Options.js"></script>
     <script type="text/javascript" src="game/MS.State/MS.State.Preload.js"></script>
-	<script type="text/javascript" src="game/MS.Menu/MS.Menu.js"></script>
+    <script type="text/javascript" src="game/MS.Menu/MS.Menu.js"></script>
     
     <!-- Complete minified script -->
 </head>
@@ -53,21 +53,23 @@
     <div data-role="page" data-fullscreen="true">
         <div data-role="content">
             <div id="container">
-            	
             	<div id="menuScreen">
-            		<div id="menu">
-            			<div id="menuCursor"><img src="resources/images/menuCursor.png"></div>
-					</div>
+            	    <div id="menu">
+            		<div id="menuCursor"><img src="resources/images/menuCursor.png"></div>
+		    </div>
             	</div>
-				
-                <audio id="music" src="resources/music/track1.wav" preload="auto"></audio>
-                <audio id="music2" src="resources/music/track1.wav" preload="auto"></audio>
-                <canvas id="staticCanvas"></canvas>
-                <canvas id="monkeyCanvas"></canvas>
-                <div id="bg_0_1"></div>
-                <div id="bg_0_2"></div>
-                <div id="bg_1_1"></div>
-                <div id="bg_1_2"></div>
+		
+                <div id="gameScreen">
+                    <audio id="music" src="resources/music/track1.wav" preload="auto"></audio>
+                    <audio id="music2" src="resources/music/track1.wav" preload="auto"></audio>
+                    <canvas id="staticCanvas"></canvas>
+                    <canvas id="monkeyCanvas"></canvas>
+                    <div id="bg_0_1"></div>
+                    <div id="bg_0_2"></div>
+                    <div id="bg_1_1"></div>
+                    <div id="bg_1_2"></div>
+                    <div id="score"></div>
+                </div>
             </div>
         </div>
     </div>
